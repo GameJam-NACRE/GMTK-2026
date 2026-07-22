@@ -1,0 +1,13 @@
+# Godot 4+ specific ignores
+.godot/
+/android/
+
+# Fichiers de configuration utilisateur (mise en page, historique)
+.import/
+*.tmp
+
+# Exécutables exportés
+*.apk
+*.exe
+*.zip
+*.aab
