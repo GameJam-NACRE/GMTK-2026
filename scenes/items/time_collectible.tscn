@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://fxl603dmke47"]
+
+[ext_resource type="Script" uid="uid://6a4bbk6ojaqw" path="res://src/items/time_collectible.gd" id="1_84486"]
+
+[node name="TimeCollectible" type="Area2D" unique_id=357789584]
+script = ExtResource("1_84486")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=845098251]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2142791988]
