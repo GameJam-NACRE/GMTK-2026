@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://b44q2m4nc26kb"]
+
+[ext_resource type="Script" uid="uid://dd0kims6goipq" path="res://src/countdown/countdown.gd" id="1_7dsqq"]
+[ext_resource type="FontFile" uid="uid://cu7crmutcanpa" path="res://assets/fonts/RubikMonoOne-Regular.ttf" id="1_r25xj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_beb6o"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
+[node name="Countdown" type="CanvasLayer" unique_id=538404236]
+script = ExtResource("1_7dsqq")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1429213477]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -0.5
+offset_right = 0.5
+offset_bottom = 20.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_beb6o")
+
+[node name="Label" type="Label" parent="PanelContainer" unique_id=2028308548]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_r25xj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="." unique_id=1431002889]
+wait_time = 30.0
+one_shot = true
+autostart = true

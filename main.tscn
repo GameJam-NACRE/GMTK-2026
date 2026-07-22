@@ -1,3 +1,7 @@
 [gd_scene format=3 uid="uid://c4cau8kc3a3eo"]
 
+[ext_resource type="PackedScene" uid="uid://b44q2m4nc26kb" path="res://scenes/countdown/countdown.tscn" id="1_ig7tw"]
+
 [node name="main" type="Node2D" unique_id=1913312274]
+
+[node name="Countdown" parent="." unique_id=1642308788 instance=ExtResource("1_ig7tw")]
