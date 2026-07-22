@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://dickspd1f8h3c"]
+
+[ext_resource type="Script" uid="uid://c66ho8ow16w13" path="res://src/items/coin_collectible.gd" id="1_8k847"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yslv0"]
+radius = 18.027756
+
+[node name="CoinCollectible" type="Area2D" unique_id=1937098084]
+script = ExtResource("1_8k847")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=18112098]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1539621902]
+shape = SubResource("CircleShape2D_yslv0")
