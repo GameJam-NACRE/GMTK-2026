@@ -5,8 +5,23 @@ extends CharacterBody2D
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
 
+var key: bool = false
+var coins: int = 0
+
 func _ready() -> void:
 	self.add_to_group("player")
+	EventBus.add_key.connect(_on_add_key)
+	EventBus.add_coin.connect(_on_add_coin)
+
+func _on_add_key() -> void:
+	key = true
+
+func _on_add_coin() -> void:
+	coins += 1
+
+func _on_use_key() -> void:
+	key = false
+
 
 func _physics_process(delta: float) -> void:
 	if velocity.x > 1 or velocity.x < -1:
