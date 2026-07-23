@@ -1,4 +1,10 @@
-[gd_scene format=3 uid="uid://c4cau8kc3a3eo"]
+[gd_scene format=3 uid="uid://c0mp4y766l07v"]
+
+[ext_resource type="PackedScene" uid="uid://7j0rw6gg8156" path="res://player.tscn" id="1_0imob"]
+[ext_resource type="Texture2D" uid="uid://dwtkyuyglfn0h" path="res://icon.svg" id="2_6vuhr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gucwf"]
+size = Vector2(128, 127)
 
 [ext_resource type="Script" uid="uid://drjilss0e533h" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b44q2m4nc26kb" path="res://scenes/countdown/countdown.tscn" id="2_0xm2m"]
