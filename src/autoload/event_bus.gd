@@ -34,6 +34,12 @@ signal add_key()
 @warning_ignore("unused_signal")
 signal add_sword()
 
+# ==== Signaux HUD ============
+
+# Indique la position du contact Joueur/Ennemi
+@warning_ignore("unused_signal")
+signal enemy_contact(enemy_position: Vector2)
+
 # ==== Signaux Level ============
 
 # Indique l'id du Dialogue à lancer
