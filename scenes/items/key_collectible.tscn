@@ -1,10 +1,12 @@
 [gd_scene format=3 uid="uid://bq7xl0354110l"]
 
+[ext_resource type="Script" uid="uid://spcrg6w5paq4" path="res://src/items/key_collectible.gd" id="1_lsoel"]
 [ext_resource type="PackedScene" uid="uid://dkem8154kulh3" path="res://scenes/items/collectible_sprite_2d.tscn" id="1_m7415"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1ei1"]
 
 [node name="KeyCollectible" type="Area2D" unique_id=411868467]
+script = ExtResource("1_lsoel")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2088849697]
 shape = SubResource("RectangleShape2D_s1ei1")
