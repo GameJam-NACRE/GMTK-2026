@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://g5wwb11eacbf"]
+
+[ext_resource type="Script" uid="uid://cbk5bvg8okfby" path="res://src/player/player.gd" id="1_dovo2"]
+[ext_resource type="Texture2D" uid="uid://bgcevghkedboj" path="res://assets/pico-8 assets/img/tilemap_packed.png" id="1_v7pse"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(24, 56, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(0, 56, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(16, 56, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(8, 56, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}],
+"loop": 1,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(40, 35)
+
+[node name="Player" type="CharacterBody2D" unique_id=1775035572]
+script = ExtResource("1_dovo2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
+texture_filter = 1
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_i3pqv")
+animation = &"walk"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356746501]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=923523403]
+position_smoothing_enabled = true
