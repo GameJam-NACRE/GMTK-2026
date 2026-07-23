@@ -98,7 +98,7 @@ func _create_pop_up_effect(amount: int) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	push_warning("test input pour countdown a enlever")
+	# push_warning("test input pour countdown a enlever")
 	if event is InputEventKey and event.pressed and not event.is_echo():
 		if event.keycode == KEY_P:
 			EventBus.add_time.emit(5)
