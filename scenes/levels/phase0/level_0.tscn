@@ -26,4 +26,4 @@ position = Vector2(583, 539)
 dialogue_id = 1
 
 [node name="KeyCollectible" parent="." index="4" unique_id=411868467 instance=ExtResource("4_l1gp7")]
-position = Vector2(481, 528)
+position = Vector2(470, 526)
