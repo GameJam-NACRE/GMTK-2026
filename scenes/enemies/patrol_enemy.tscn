@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cexubpgckydk8"]
+
+[ext_resource type="PackedScene" uid="uid://dahcdd047g8dl" path="res://scenes/enemies/base_enemy.tscn" id="1_3dqja"]
+[ext_resource type="Script" uid="uid://b32rpxdg7p0ky" path="res://src/enemies/enemy_0.gd" id="2_bvcjx"]
+
+[node name="PatrolEnemy" unique_id=716057530 instance=ExtResource("1_3dqja")]
+script = ExtResource("2_bvcjx")

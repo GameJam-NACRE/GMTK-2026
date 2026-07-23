@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b0f8nooig72mi"]
+
+[ext_resource type="PackedScene" uid="uid://cexubpgckydk8" path="res://scenes/enemies/patrol_enemy.tscn" id="1_uw06g"]
+
+[node name="PatrolEnemy" type="Node2D" unique_id=620113945]
+
+[node name="PointB" type="Marker2D" parent="." unique_id=912521414]
+
+[node name="PointA" type="Marker2D" parent="." unique_id=834587806]
+
+[node name="PatrolEnemy" parent="." unique_id=716057530 node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("1_uw06g")]
+point_a = NodePath("../PointA")
+point_b = NodePath("../PointB")

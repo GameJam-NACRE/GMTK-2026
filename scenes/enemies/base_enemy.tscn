@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://dahcdd047g8dl"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tq11c"]
+size = Vector2(8, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2kijx"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c1rwf"]
+radius = 17.004135
+
+[node name="BaseEnemy" type="CharacterBody2D" unique_id=716057530]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=948868268]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = SubResource("PlaceholderTexture2D_tq11c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1482867075]
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_2kijx")
+debug_color = Color(0, 0.5789873, 0.8089682, 0.41960785)
+
+[node name="HitZone" type="Area2D" parent="." unique_id=1763869528]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitZone" unique_id=105073442]
+position = Vector2(0, -0.25)
+scale = Vector2(2, 2)
+shape = SubResource("CircleShape2D_c1rwf")
+debug_color = Color(0, 0.5789873, 0.8089682, 0.41960785)
