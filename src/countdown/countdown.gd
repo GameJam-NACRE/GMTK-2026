@@ -47,7 +47,8 @@ func play_intro_sequence() -> void:
 	tween.tween_property(intro_label, "modulate:a", 1.0, intro_fade_in_time)
 
 	tween.tween_interval(intro_stay_time)
-	
+
+	EventBus.intro_countdown_end.emit()
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 
 	tween.tween_property(intro_label, "position:y", intro_label.position.y - intro_fade_out_height, intro_fade_out_time)
