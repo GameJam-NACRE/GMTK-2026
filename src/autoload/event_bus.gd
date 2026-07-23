@@ -49,3 +49,13 @@ signal level_ended()
 # Indique qu'un flag de fin de niveau à été atteint
 @warning_ignore("unused_signal")
 signal flag_reached()
+
+# ==== Signaux HUD ============
+
+# Indique que l'écran est totalement noir
+@warning_ignore("unused_signal")
+signal faded_to_black
+
+# Indique que le fade a terminé
+@warning_ignore("unused_signal")
+signal fade_finished

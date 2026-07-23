@@ -7,6 +7,7 @@ var current_level: Level = null
 func load_level(level_scene: PackedScene):
 	if current_level:
 		current_level.queue_free()
+		current_level = null
 
 	call_deferred("_do_load_level", level_scene)
 
