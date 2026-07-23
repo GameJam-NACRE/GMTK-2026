@@ -1,7 +1,7 @@
 @abstract
 class_name Collectible extends Area2D
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $CollectibleSprite2D
 @onready var collision_shape = $CollisionShape2D
 
 var is_collected = false
@@ -10,18 +10,26 @@ var is_collected = false
 func _ready() -> void:
 	self.add_to_group("collectible")
 	set_collision_shape()
+	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
-	if body is not CharacterBody2D and !body.is_in_group("player"):
+	if not body.is_in_group("player"):
 		return
 	if is_collected == true:
 		return
 
 	item_effect()
+	queue_free()
 
 func set_collision_shape() -> void:
-	if !sprite.texture:
+	if not is_instance_valid(sprite) or not is_instance_valid(collision_shape):
+		push_warning("Collectible: Sprite2D ou CollisionShape2D introuvable dans la scène.")
 		return
+
+	if not sprite.texture or not collision_shape.shape:
+		return
+	
+	collision_shape.shape = collision_shape.shape.duplicate()
 
 	var sprite_size = sprite.texture.get_size() * sprite.scale
 
