@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://bq7xl0354110l"]
 
+[ext_resource type="PackedScene" uid="uid://dkem8154kulh3" path="res://scenes/items/collectible_sprite_2d.tscn" id="1_m7415"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s1ei1"]
 
 [node name="KeyCollectible" type="Area2D" unique_id=411868467]
@@ -7,4 +9,4 @@
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2088849697]
 shape = SubResource("RectangleShape2D_s1ei1")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1190582856]
+[node name="CollectibleSprite2D" parent="." unique_id=495970359 instance=ExtResource("1_m7415")]
