@@ -15,6 +15,8 @@ extends CanvasLayer
 @onready var intro_label: Label = $IntroLabel
 @onready var countdown: Timer = $Timer
 
+const TimeEffectScene = preload("res://scenes/countdown/time_effect.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	countdown.timeout.connect(_on_countdown_timeout)
@@ -48,7 +50,7 @@ func play_intro_sequence() -> void:
 
 	tween.tween_interval(intro_stay_time)
 
-	EventBus.intro_countdown_end.emit()
+	tween.chain().tween_callback(func(): EventBus.intro_countdown_end.emit())
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
 
 	tween.tween_property(intro_label, "position:y", intro_label.position.y - intro_fade_out_height, intro_fade_out_time)
@@ -67,12 +69,16 @@ func _on_add_time(sec: int) -> void:
 	if countdown.is_stopped():
 		return
 
+	_create_pop_up_effect(sec)
+
 	var new_time = countdown.time_left + sec
 	countdown.start(new_time)
 
 func _on_remove_time(sec: int) -> void:
 	if countdown.is_stopped():
 		return
+
+	_create_pop_up_effect(-sec)
 
 	var new_time = countdown.time_left - sec
 
@@ -81,3 +87,20 @@ func _on_remove_time(sec: int) -> void:
 		_on_countdown_timeout()
 	else :
 		countdown.start(new_time)
+
+func _create_pop_up_effect(amount: int) -> void:
+	var effect = TimeEffectScene.instantiate()
+	get_tree().current_scene.add_child(effect)
+	effect.global_position = panel_container.global_position + (panel_container.size / 2.0)
+	effect.start(amount)
+
+
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	push_warning("test input pour countdown a enlever")
+	if event is InputEventKey and event.pressed and not event.is_echo():
+		if event.keycode == KEY_P:
+			EventBus.add_time.emit(5)
+		if event.keycode == KEY_O:
+			EventBus.remove_time.emit(5)
