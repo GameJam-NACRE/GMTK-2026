@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://jkpmod33g2gb"]
+
+[ext_resource type="PackedScene" uid="uid://dkem8154kulh3" path="res://scenes/items/collectible_sprite_2d.tscn" id="1_ebb05"]
+
+[node name="SwordCollectible" type="Area2D" unique_id=1348444326]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131855540]
+
+[node name="CollectibleSprite2D" parent="." unique_id=495970359 instance=ExtResource("1_ebb05")]
