@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cty2x680uisnb" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://b44q2m4nc26kb" path="res://scenes/countdown/countdown.tscn" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://g5wwb11eacbf" path="res://scenes/player/player.tscn" id="3_h2yge"]
 
 [node name="main" type="Node" unique_id=1892421276]
 script = ExtResource("1_ig7tw")
@@ -10,5 +9,3 @@ script = ExtResource("1_ig7tw")
 [node name="Countdown" parent="." unique_id=538404236 instance=ExtResource("2_0xm2m")]
 
 [node name="LevelContainer" type="Node" parent="." unique_id=1966204407]
-
-[node name="Player" parent="." unique_id=1775035572 instance=ExtResource("3_h2yge")]
