@@ -14,12 +14,14 @@ config/name="GMTK-2026"
 run/main_scene="uid://c4cau8kc3a3eo"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
+<<<<<<<HEADrun/main_scene="uid://c4cau8kc3a3eo"
 
 [autoload]
 
 EventBus="*uid://bngrwvik0lxya"
 LevelManager="*uid://bkavsqlekwpr2"
 GameManager="*uid://b8ma26tpy68dt"
+ScreenFader="*uid://dyv8dtvit5bne"
 
 [display]
 
