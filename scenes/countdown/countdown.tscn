@@ -14,8 +14,12 @@ expand_margin_bottom = 8.0
 
 [node name="Countdown" type="CanvasLayer" unique_id=538404236]
 script = ExtResource("1_7dsqq")
+intro_fade_in_time = 0.0
+intro_end_font_size = 50
+main_fade_in_time = 0.0
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1429213477]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -35,3 +39,21 @@ vertical_alignment = 1
 wait_time = 30.0
 one_shot = true
 autostart = true
+
+[node name="IntroLabel" type="Label" parent="." unique_id=1092467083]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_r25xj")
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
+vertical_alignment = 1
