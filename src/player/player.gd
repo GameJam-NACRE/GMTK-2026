@@ -21,6 +21,9 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
 	
+	if Input.is_action_just_released("move_up") and velocity.y < 0:
+		velocity.y = JUMP_VELOCITY / 4
+	
 	if Input.is_action_pressed("move_down") and is_on_floor():
 		animated_sprite_2d.animation = "crouch"
 
@@ -29,11 +32,15 @@ func _physics_process(delta: float) -> void:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
+	if Input.is_action_just_pressed("attack") and is_on_floor():
+		animated_sprite_2d.animation = "attack_1"
+	elif Input.is_action_just_pressed("attack") and not is_on_floor():
+		animated_sprite_2d.animation = "attack_2"
 
 	move_and_slide()
 	
-	if direction == 1.0:
+	if direction > 0:
 		animated_sprite_2d.flip_h = false
-	else:
+	elif direction < 0:
 		animated_sprite_2d.flip_h = true
-
