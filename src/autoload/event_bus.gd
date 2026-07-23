@@ -13,7 +13,7 @@ signal remove_time(sec: int)
 
 # Ajoute 1 pièce au joueur
 signal add_coin()
-#
+
 # ==== Signaux Level ============
 
 # Indique l'id du Dialogue à lancer
@@ -24,3 +24,8 @@ signal level_loaded()
 
 # Indique la fin d'un niveau
 signal level_ended()
+
+# ==== Signaux Composants ============
+
+# Indique qu'un flag de fin de niveau à été atteint
+signal flag_reached()
