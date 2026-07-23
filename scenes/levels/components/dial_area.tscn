@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://sovpl6crotce"]
+
+[ext_resource type="Script" uid="uid://rvteedfos66c" path="res://src/levels/components/dial_area.gd" id="1_sdf37"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yslv0"]
+
+[node name="DialArea" type="Area2D" unique_id=868760559]
+script = ExtResource("1_sdf37")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=743504233]
+shape = SubResource("RectangleShape2D_yslv0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1567944314]

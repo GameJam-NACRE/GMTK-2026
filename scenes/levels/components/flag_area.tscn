@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://dtpj0mi1s2763"]
+
+[ext_resource type="Script" uid="uid://7gwjgqdwmiql" path="res://src/levels/components/flag_area.gd" id="1_1bnsv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyc1q"]
+
+[node name="FlagArea" type="Area2D" unique_id=336358493]
+script = ExtResource("1_1bnsv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=587677419]
+shape = SubResource("RectangleShape2D_iyc1q")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1791036243]
