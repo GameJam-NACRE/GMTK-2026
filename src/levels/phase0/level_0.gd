@@ -1,7 +1,5 @@
 extends Level
-class_name LevelCheckpoint
-
+class_name Level0
 
 func _ready() -> void:
 	super()
-
