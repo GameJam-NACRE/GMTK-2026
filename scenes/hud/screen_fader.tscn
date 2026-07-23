@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dyv8dtvit5bne"]
+
+[ext_resource type="Script" uid="uid://dpxk0unfy25au" path="res://src/autoload/screen_fader.gd" id="1_ol86o"]
+
+[node name="ScreenFader" type="CanvasLayer" unique_id=1879025315]
+script = ExtResource("1_ol86o")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1163851896]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
