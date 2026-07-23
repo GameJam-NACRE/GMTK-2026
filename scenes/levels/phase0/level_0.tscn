@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://jpnocx1y1py8"]
 
-[ext_resource type="Script" uid="uid://b7ujbggnhwaas" path="res://src/levels/phase0/level_phase_0.gd" id="1_t37um"]
+[ext_resource type="Script" uid="uid://b7ujbggnhwaas" path="res://src/levels/phase0/level_0.gd" id="1_t37um"]
 [ext_resource type="PackedScene" uid="uid://sovpl6crotce" path="res://scenes/levels/components/dial_area.tscn" id="2_qkbp5"]
 [ext_resource type="PackedScene" uid="uid://dtpj0mi1s2763" path="res://scenes/levels/components/flag_area.tscn" id="3_iyc1q"]
 
-[node name="Phase0Level0" type="Node2D" unique_id=1162827819]
+[node name="Level0" type="Node2D" unique_id=1162827819]
 script = ExtResource("1_t37um")
 
 [node name="DialAreas" type="Node2D" parent="." unique_id=1304205629]
