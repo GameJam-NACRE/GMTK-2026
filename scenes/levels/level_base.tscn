@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c2qe3wclb74iq"]
+
+[ext_resource type="PackedScene" uid="uid://g5wwb11eacbf" path="res://scenes/player/player.tscn" id="1_d61h5"]
+[ext_resource type="PackedScene" uid="uid://dtpj0mi1s2763" path="res://scenes/levels/components/flag_area.tscn" id="3_dje0g"]
+[ext_resource type="TileSet" uid="uid://bbq805536q3ed" path="res://assets/tilemaps/main_tileset.tres" id="4_g7p6o"]
+
+[node name="LevelBase" type="Node2D" unique_id=659112569]
+
+[node name="Player" parent="." unique_id=1775035572 instance=ExtResource("1_d61h5")]
+
+[node name="FlagArea" parent="." unique_id=336358493 instance=ExtResource("3_dje0g")]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1575191976]
+texture_filter = 1
+scale = Vector2(5, 5)
+tile_set = ExtResource("4_g7p6o")
