@@ -11,3 +11,6 @@ signal remove_time(sec: int)
 
 # Indique que le CD est terminé
 signal countdown_end()
+
+# Indique que la transition d'intro du countdown est terminé
+signal intro_countdown_end()
