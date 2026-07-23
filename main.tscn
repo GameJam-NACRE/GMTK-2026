@@ -4,3 +4,5 @@
 
 [node name="main" type="Node" unique_id=772390565]
 script = ExtResource("1_ig7tw")
+
+[node name="LevelContainer" type="Node" parent="." unique_id=1382705557]
