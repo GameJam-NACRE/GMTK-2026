@@ -1,17 +1,26 @@
-[gd_scene format=3 uid="uid://jpnocx1y1py8"]
+[gd_scene format=4 uid="uid://jpnocx1y1py8"]
 
 [ext_resource type="Script" uid="uid://b7ujbggnhwaas" path="res://src/levels/phase0/level_0.gd" id="1_t37um"]
+[ext_resource type="PackedScene" uid="uid://c2qe3wclb74iq" path="res://scenes/levels/level_base.tscn" id="2_owwfv"]
 [ext_resource type="PackedScene" uid="uid://sovpl6crotce" path="res://scenes/levels/components/dial_area.tscn" id="2_qkbp5"]
-[ext_resource type="PackedScene" uid="uid://dtpj0mi1s2763" path="res://scenes/levels/components/flag_area.tscn" id="3_iyc1q"]
 
-[node name="Level0" type="Node2D" unique_id=1162827819]
+[node name="Level0" unique_id=659112569 instance=ExtResource("2_owwfv")]
 script = ExtResource("1_t37um")
 
-[node name="DialAreas" type="Node2D" parent="." unique_id=1304205629]
+[node name="Player" parent="." index="0" unique_id=1775035572]
+position = Vector2(368, 521)
 
-[node name="DialArea0" parent="DialAreas" unique_id=868760559 instance=ExtResource("2_qkbp5")]
+[node name="FlagArea" parent="." index="1" unique_id=336358493]
+position = Vector2(738, 540)
 
-[node name="DialArea1" parent="DialAreas" unique_id=785252885 instance=ExtResource("2_qkbp5")]
+[node name="TileMapLayer" parent="." index="2" unique_id=1575191976]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAJAA4AAAAEAAIAAAAKAA4AAAAEAAIAAAALAA4AAAAEAAIAAAAMAA4AAAAEAAIAAAANAA4AAAAEAAIAAAAOAA4AAAAEAAIAAAAPAA4AAAAEAAIAAAAQAA4AAAAEAAIAAAARAA4AAAAEAAIAAAASAA4AAAAEAAIAAAAIAA4AAAAEAAIAAAAHAA4AAAADAAIAAAAHAA0AAAADAAEAAAAHAAwAAAADAAEAAAAHAAsAAAADAAEAAAAHAAoAAAADAAAAAAAIAAoAAAAEAAAAAAAJAAoAAAAEAAAAAAAKAAoAAAAEAAAAAAALAAoAAAAEAAAAAAAMAAoAAAAEAAAAAAANAAoAAAAEAAAAAAAOAAoAAAAEAAAAAAAPAAoAAAAFAAAAAAAPAAsAAAAGAAMAAAAQAAsAAAAEAAAAAAARAAsAAAAEAAAAAAASAAsAAAAGAAIAAAASAAwAAAAFAAEAAAA=")
+
+[node name="DialAreas" type="Node2D" parent="." index="3" unique_id=84416281]
+
+[node name="DialArea" parent="DialAreas" index="0" unique_id=868760559 instance=ExtResource("2_qkbp5")]
+
+[node name="DialArea2" parent="DialAreas" index="1" unique_id=549837723 instance=ExtResource("2_qkbp5")]
+position = Vector2(583, 539)
 dialogue_id = 1
-
-[node name="FlagArea" parent="." unique_id=336358493 instance=ExtResource("3_iyc1q")]
