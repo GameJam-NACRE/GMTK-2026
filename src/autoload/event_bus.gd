@@ -12,6 +12,10 @@ signal add_time(sec: int)
 @warning_ignore("unused_signal")
 signal remove_time(sec: int)
 
+# Indique la fin du countdown
+@warning_ignore("unused_signal")
+signal countdown_end()
+
 # ==== Signaux Player ============
 
 # Ajoute 1 pièce au joueur
