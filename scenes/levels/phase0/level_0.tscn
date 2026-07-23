@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b7ujbggnhwaas" path="res://src/levels/phase0/level_0.gd" id="1_t37um"]
 [ext_resource type="PackedScene" uid="uid://c2qe3wclb74iq" path="res://scenes/levels/level_base.tscn" id="2_owwfv"]
 [ext_resource type="PackedScene" uid="uid://sovpl6crotce" path="res://scenes/levels/components/dial_area.tscn" id="2_qkbp5"]
+[ext_resource type="PackedScene" uid="uid://bq7xl0354110l" path="res://scenes/items/key_collectible.tscn" id="4_l1gp7"]
 
 [node name="Level0" unique_id=659112569 instance=ExtResource("2_owwfv")]
 script = ExtResource("1_t37um")
@@ -14,7 +15,6 @@ position = Vector2(368, 521)
 position = Vector2(738, 540)
 
 [node name="TileMapLayer" parent="." index="2" unique_id=1575191976]
-texture_filter = 1
 tile_map_data = PackedByteArray("AAAJAA4AAAAEAAIAAAAKAA4AAAAEAAIAAAALAA4AAAAEAAIAAAAMAA4AAAAEAAIAAAANAA4AAAAEAAIAAAAOAA4AAAAEAAIAAAAPAA4AAAAEAAIAAAAQAA4AAAAEAAIAAAARAA4AAAAEAAIAAAASAA4AAAAEAAIAAAAIAA4AAAAEAAIAAAAHAA4AAAADAAIAAAAHAA0AAAADAAEAAAAHAAwAAAADAAEAAAAHAAsAAAADAAEAAAAHAAoAAAADAAAAAAAIAAoAAAAEAAAAAAAJAAoAAAAEAAAAAAAKAAoAAAAEAAAAAAALAAoAAAAEAAAAAAAMAAoAAAAEAAAAAAANAAoAAAAEAAAAAAAOAAoAAAAEAAAAAAAPAAoAAAAFAAAAAAAPAAsAAAAGAAMAAAAQAAsAAAAEAAAAAAARAAsAAAAEAAAAAAASAAsAAAAGAAIAAAASAAwAAAAFAAEAAAA=")
 
 [node name="DialAreas" type="Node2D" parent="." index="3" unique_id=84416281]
@@ -24,3 +24,6 @@ tile_map_data = PackedByteArray("AAAJAA4AAAAEAAIAAAAKAA4AAAAEAAIAAAALAA4AAAAEAAI
 [node name="DialArea2" parent="DialAreas" index="1" unique_id=549837723 instance=ExtResource("2_qkbp5")]
 position = Vector2(583, 539)
 dialogue_id = 1
+
+[node name="KeyCollectible" parent="." index="4" unique_id=411868467 instance=ExtResource("4_l1gp7")]
+position = Vector2(481, 528)
