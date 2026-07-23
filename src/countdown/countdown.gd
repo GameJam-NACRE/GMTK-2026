@@ -90,7 +90,7 @@ func _on_remove_time(sec: int) -> void:
 
 func _create_pop_up_effect(amount: int) -> void:
 	var effect = TimeEffectScene.instantiate()
-	get_tree().current_scene.add_child(effect)
+	main_label.add_child(effect)
 	effect.global_position = panel_container.global_position + (panel_container.size / 2.0)
 	effect.start(amount)
 

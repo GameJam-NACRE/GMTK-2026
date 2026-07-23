@@ -4,6 +4,7 @@
 [ext_resource type="FontFile" uid="uid://doc3ynaivimmv" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="2_orpmy"]
 
 [node name="TimeEffect" type="Node2D" unique_id=1095217412]
+z_index = 50
 script = ExtResource("1_qsei7")
 float_height = 150.0
 arc_amplitude = 120.0
