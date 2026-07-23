@@ -11,5 +11,6 @@
 [node name="FlagArea" parent="." unique_id=336358493 instance=ExtResource("3_dje0g")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1575191976]
+texture_filter = 1
 scale = Vector2(5, 5)
 tile_set = ExtResource("4_g7p6o")
