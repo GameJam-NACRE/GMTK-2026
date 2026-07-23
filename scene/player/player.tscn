@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://g5wwb11eacbf"]
+
+[ext_resource type="Texture2D" uid="uid://bgcevghkedboj" path="res://assets/pico-8 assets/img/tilemap_packed.png" id="1_v7pse"]
+
+[sub_resource type="GDScript" id="GDScript_onrkg"]
+script/source = "extends CharacterBody2D
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+
+@export var SPEED = 300.0
+@export var JUMP_VELOCITY = -400.0
+
+
+func _physics_process(delta: float) -> void:
+	if velocity.x > 1 or velocity.x < -1:
+		animated_sprite_2d.animation = \"walk\"
+	else:
+		animated_sprite_2d.animation = \"idle\"
+
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+		animated_sprite_2d.animation = \"jump\"
+
+	if Input.is_action_just_pressed(\"move_up\") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+	
+	if Input.is_action_pressed(\"move_down\") and is_on_floor():
+		animated_sprite_2d.animation = \"crouch\"
+
+	var direction := Input.get_axis(\"move_left\", \"move_right\")
+	if direction:
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+
+	move_and_slide()
+	
+	if direction == 1.0:
+		animated_sprite_2d.flip_h = false
+	else:
+		animated_sprite_2d.flip_h = true
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_onrkg"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(24, 56, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(0, 56, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(16, 56, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
+atlas = ExtResource("1_v7pse")
+region = Rect2(8, 56, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_onrkg")
+}],
+"loop": 1,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3pqv")
+}],
+"loop": 1,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqtel")
+}],
+"loop": 1,
+"name": &"jump",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sweqy")
+}],
+"loop": 1,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+size = Vector2(40, 35)
+
+[node name="Player" type="CharacterBody2D" unique_id=1775035572]
+position = Vector2(291, 118)
+script = SubResource("GDScript_onrkg")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
+texture_filter = 1
+position = Vector2(0, 2.3841858e-07)
+scale = Vector2(5, 5)
+sprite_frames = SubResource("SpriteFrames_i3pqv")
+animation = &"crouch"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356746501]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_0xm2m")
