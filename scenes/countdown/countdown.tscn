@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b44q2m4nc26kb"]
 
 [ext_resource type="Script" uid="uid://dd0kims6goipq" path="res://src/countdown/countdown.gd" id="1_7dsqq"]
-[ext_resource type="FontFile" uid="uid://cu7crmutcanpa" path="res://assets/fonts/RubikMonoOne-Regular.ttf" id="1_r25xj"]
+[ext_resource type="FontFile" uid="uid://doc3ynaivimmv" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="2_7dsqq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_beb6o"]
 bg_color = Color(0, 0, 0, 1)
@@ -31,7 +31,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_beb6o")
 
 [node name="Label" type="Label" parent="PanelContainer" unique_id=2028308548]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_r25xj")
+theme_override_fonts/font = ExtResource("2_7dsqq")
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -53,7 +53,7 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("1_r25xj")
+theme_override_fonts/font = ExtResource("2_7dsqq")
 theme_override_font_sizes/font_size = 80
 horizontal_alignment = 1
 vertical_alignment = 1
