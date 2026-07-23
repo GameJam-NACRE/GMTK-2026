@@ -27,6 +27,10 @@ signal intro_countdown_end()
 @warning_ignore("unused_signal")
 signal add_coin()
 
+# Ajoute 1 key au joueur
+@warning_ignore("unused_signal")
+signal add_key()
+
 # ==== Signaux Level ============
 
 # Indique l'id du Dialogue à lancer
