@@ -6,7 +6,7 @@
 [node name="TimeEffect" type="Node2D" unique_id=1095217412]
 script = ExtResource("1_qsei7")
 float_height = 150.0
-arc_amplitude = 80.0
+arc_amplitude = 120.0
 min_rotation_range = -0.5
 max_rotation_range = 0.5
 
