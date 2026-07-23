@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://3rwucao7gwck"]
+
+[ext_resource type="Script" uid="uid://if516r3ffa2i" path="res://src/countdown/time_effect.gd" id="1_qsei7"]
+[ext_resource type="FontFile" uid="uid://doc3ynaivimmv" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="2_orpmy"]
+
+[node name="TimeEffect" type="Node2D" unique_id=1095217412]
+script = ExtResource("1_qsei7")
+float_height = 150.0
+arc_amplitude = 80.0
+min_rotation_range = -0.5
+max_rotation_range = 0.5
+
+[node name="Label" type="Label" parent="." unique_id=1532931654]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_orpmy")
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+vertical_alignment = 1
