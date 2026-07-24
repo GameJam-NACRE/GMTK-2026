@@ -17,6 +17,7 @@ script = ExtResource("1_7dsqq")
 intro_fade_in_time = 0.0
 intro_end_font_size = 50
 main_fade_in_time = 0.0
+critic_countdown = 14.5
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1429213477]
 modulate = Color(1, 1, 1, 0)
@@ -27,6 +28,7 @@ offset_left = -0.5
 offset_right = 0.5
 offset_bottom = 20.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_beb6o")
 
 [node name="Label" type="Label" parent="PanelContainer" unique_id=2028308548]
@@ -53,6 +55,26 @@ offset_right = 20.0
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_7dsqq")
+theme_override_font_sizes/font_size = 80
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=799590777]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ClickerCountdown" type="VBoxContainer" parent="CenterContainer" unique_id=2040114913]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="ClickerLabel" type="Label" parent="CenterContainer/ClickerCountdown" unique_id=878484106]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("2_7dsqq")
 theme_override_font_sizes/font_size = 80
 horizontal_alignment = 1
