@@ -30,7 +30,6 @@ func _on_area_entered(area: Area2D) -> void:
 	take_damage(hit_box.damage)
 
 func take_damage(amount: int) -> void:
-	print("Oh no I'm hurt!")
 	if current_health <= 0:
 		return
 	
