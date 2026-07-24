@@ -4,6 +4,7 @@ extends CharacterBody2D
 
 @export var SPEED = 300.0
 @export var JUMP_VELOCITY = -400.0
+@export var Knockback_force: int = 1
 
 var is_knocked_back: bool = false
 
@@ -26,9 +27,10 @@ func _on_use_key() -> void:
 	key = false
 
 func _on_enemy_contact(enemy_pos: Vector2) -> void:
-	velocity = (self.position - enemy_pos).normalized() * 500
+	var knockback_clamped = clamp(Knockback_force, 0, 10)
+	velocity = (self.position - enemy_pos).normalized() * (500 * knockback_clamped)
 	if is_on_floor():
-		velocity.y = -200
+		velocity.y = -(200 * knockback_clamped) 
 	is_knocked_back = true
 	await get_tree().create_timer(0.25).timeout
 	is_knocked_back = false
