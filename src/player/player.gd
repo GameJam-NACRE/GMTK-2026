@@ -14,6 +14,8 @@ var coins: int = 0
 func _ready() -> void:
 	self.add_to_group("player")
 	EventBus.add_key.connect(_on_add_key)
+	EventBus.use_key.connect(_on_use_key)
+	EventBus.got_key.connect(_on_got_key)
 	EventBus.add_coin.connect(_on_add_coin)
 	EventBus.enemy_contact.connect(_on_enemy_contact)
 
@@ -25,6 +27,13 @@ func _on_add_coin() -> void:
 
 func _on_use_key() -> void:
 	key = false
+
+func _on_got_key() -> void:
+	if key:
+		EventBus.one_key.emit()
+	else:
+		EventBus.no_key.emit()
+
 
 func _on_enemy_contact(enemy_pos: Vector2) -> void:
 	var knockback_clamped = clamp(Knockback_force, 0, 10)
