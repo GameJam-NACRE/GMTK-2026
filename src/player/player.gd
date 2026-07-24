@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_box: Area2D = $HitBox
 
 @export var Knockback_force: int = 1
 
@@ -9,9 +10,12 @@ extends CharacterBody2D
 @export var jump_velocity = -500.0
 @export var short_hop_divisor = 4.0
 @export var attack_speed_scale = 1.5
+@export var attack_1_active_frame = 2
+@export var attack_2_active_frame = 3
 
 var is_attacking = false
 var is_running = false
+var hit_box_was_active = false
 
 var is_knocked_back: bool = false
 
@@ -20,6 +24,7 @@ var coins: int = 0
 
 func _ready() -> void:
 	add_to_group("player")
+	hit_box.monitorable = false
 	EventBus.add_key.connect(_on_add_key)
 	EventBus.add_coin.connect(_on_add_coin)
 	EventBus.enemy_contact.connect(_on_enemy_contact)
@@ -90,3 +95,26 @@ func _physics_process(delta: float) -> void:
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if is_attacking:
 		is_attacking = false
+		hit_box.monitorable = false
+
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if not is_attacking:
+		return
+ 
+	var anim = animated_sprite_2d.animation
+	var frame = animated_sprite_2d.frame
+ 
+	var is_active_frame = (anim == "attack_1" and frame == attack_1_active_frame) \
+		or (anim == "attack_2" and frame == attack_2_active_frame)
+ 
+	hit_box.monitorable = is_active_frame
+
+	if is_active_frame and not hit_box_was_active:
+		_apply_hit_to_existing_overlaps()
+ 
+	hit_box_was_active = is_active_frame 
+ 
+func _apply_hit_to_existing_overlaps() -> void:
+	for area in hit_box.get_overlapping_areas():
+		if area.name == "HitZone":
+			area.get_parent().take_damage(hit_box.damage)

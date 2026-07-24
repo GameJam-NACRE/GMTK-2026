@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://dahcdd047g8dl"]
 
+[ext_resource type="Script" uid="uid://bkhew5iu3jx5n" path="res://src/enemies/enemy.gd" id="1_r5xb8"]
+
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_tq11c"]
 size = Vector2(8, 8)
 
@@ -9,6 +11,7 @@ size = Vector2(8, 8)
 radius = 17.004135
 
 [node name="BaseEnemy" type="CharacterBody2D" unique_id=716057530]
+script = ExtResource("1_r5xb8")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=948868268]
 texture_filter = 1

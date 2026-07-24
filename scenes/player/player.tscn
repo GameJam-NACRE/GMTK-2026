@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://ev1tswtpw3xq" path="res://assets/player/Red Guard idle.png" id="4_qek5x"]
 [ext_resource type="Texture2D" uid="uid://cyvw7i4142qbl" path="res://assets/player/Red Guard run.png" id="5_5gtgg"]
 [ext_resource type="Texture2D" uid="uid://b5466jm3tlle5" path="res://assets/player/Red Guard walk.png" id="6_h17s1"]
+[ext_resource type="Script" uid="uid://d032eqyly75tb" path="res://src/player/player_hit_box.gd" id="7_0owmy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
 atlas = ExtResource("2_75vfm")
@@ -608,6 +609,10 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
 size = Vector2(22, 33.75)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs8x0"]
+radius = 19.0
+height = 56.0
+
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
 script = ExtResource("1_dovo2")
 
@@ -616,16 +621,29 @@ texture_filter = 1
 position = Vector2(1, 8)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_i3pqv")
-animation = &"idle"
+animation = &"attack_1"
 autoplay = "idle"
+frame = 7
+frame_progress = 1.0
 offset = Vector2(-2, -20)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356746501]
-position = Vector2(-1, -8.125)
+position = Vector2(0, -9)
 shape = SubResource("RectangleShape2D_0xm2m")
+
+[node name="HitBox" type="Area2D" parent="." unique_id=1166877280]
+position = Vector2(43, 8)
+monitorable = false
+script = ExtResource("7_0owmy")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" unique_id=81656407]
+position = Vector2(-26, -19)
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_hs8x0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=923523403]
 position_smoothing_enabled = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
