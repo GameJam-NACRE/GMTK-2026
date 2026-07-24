@@ -27,7 +27,6 @@ func _on_launch_dialogue(id: int) -> void :
 		return
 
 	_play_dialogue(dialogue_data)
-	# Launch Text + Voc du dialogue 
 
 func _get_dialogue_by_id(id: int) -> DialogueData:
 	for d in dialogues:
@@ -43,19 +42,41 @@ func _play_dialogue(data: DialogueData) -> void:
 	if audio_player.playing:
 		audio_player.stop()
 	
+	dialogue_label.modulate.a = 1.0
+	dialogue_label.visible_characters = 0
+	dialogue_label.text = data.text
+
 	if data.audio:
 		audio_player.stream = data.audio
 		audio_player.play()
 
-	if data.text:
-		dialogue_label.text = data.text
-		dialogue_label.visible_characters = 0
+	_animate_and_hide_subtitles(data)
 
-	var duration: float = data.audio.get_length() if data.audio else 3.0
-	var total_chars = dialogue_label.get_total_character_count()
 
+func _animate_and_hide_subtitles(data: DialogueData) -> void:
 	active_dialogue_tween = create_tween()
-	active_dialogue_tween.tween_property(dialogue_label, "visible_characters", total_chars, duration)
+
+	var text_content = data.text
+	
+	for i in range(text_content.length()):
+		active_dialogue_tween.tween_property(dialogue_label, "visible_characters", i + 1, data.dial_char_speed)
+		
+		var current_char = text_content[i]
+		if current_char in [".", "!", "?", ":"]:
+			active_dialogue_tween.tween_interval(data.dial_long_pause)
+		elif current_char in [",", ";"]:
+			active_dialogue_tween.tween_interval(data.dial_short_pause)
+
+	if data.audio:
+		var display_time = data.audio.get_length()
+		active_dialogue_tween.tween_interval(max(data.dial_time_if_audio, display_time - (text_content.length() * data.dial_char_speed)))
+	else:
+		active_dialogue_tween.tween_interval(data.dial_time_if_no_audio)
+
+	active_dialogue_tween.tween_property(dialogue_label, "modulate:a", 0.0, 0.5)
+	
+	active_dialogue_tween.tween_callback(func(): dialogue_label.text = "")
+
 
 func _on_flag_reached() -> void:
 	end_level()

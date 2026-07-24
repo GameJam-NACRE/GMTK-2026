@@ -30,6 +30,18 @@ signal add_coin()
 @warning_ignore("unused_signal")
 signal add_key()
 
+@warning_ignore("unused_signal")
+signal use_key()
+
+@warning_ignore("unused_signal")
+signal no_key()
+
+@warning_ignore("unused_signal")
+signal one_key()
+
+@warning_ignore("unused_signal")
+signal got_key()
+
 # ==== Signaux Level ============
 
 # Indique l'id du Dialogue à lancer

@@ -11,6 +11,8 @@ var coins: int = 0
 func _ready() -> void:
 	self.add_to_group("player")
 	EventBus.add_key.connect(_on_add_key)
+	EventBus.use_key.connect(_on_use_key)
+	EventBus.got_key.connect(_on_got_key)
 	EventBus.add_coin.connect(_on_add_coin)
 
 func _on_add_key() -> void:
@@ -21,6 +23,12 @@ func _on_add_coin() -> void:
 
 func _on_use_key() -> void:
 	key = false
+
+func _on_got_key() -> void:
+	if key:
+		EventBus.one_key.emit()
+	else:
+		EventBus.no_key.emit()
 
 
 func _physics_process(delta: float) -> void:
