@@ -2,6 +2,9 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box: Area2D = $HitBox
+@onready var rayCastLeftNode = $RayCastLeft
+@onready var rayCastRightNode = $RayCastRight
+@onready var timerNode = $Timer
 
 @export var Knockback_force: int = 1
 
@@ -12,10 +15,13 @@ extends CharacterBody2D
 @export var attack_speed_scale = 1.5
 @export var attack_1_active_frame = 2
 @export var attack_2_active_frame = 3
+@export var wall_jump_power = 1250 
+@export var wall_jump_time = 0.2
 
 var is_attacking = false
 var is_running = false
 var hit_box_was_active = false
+var justWallJumped = false
 
 var is_knocked_back: bool = false
 
@@ -28,6 +34,10 @@ func _ready() -> void:
 	EventBus.add_key.connect(_on_add_key)
 	EventBus.add_coin.connect(_on_add_coin)
 	EventBus.enemy_contact.connect(_on_enemy_contact)
+	timerNode.connect('timeout', _on_timer_timeout)
+
+func _on_timer_timeout() -> void:
+	justWallJumped = false
 
 func _on_add_key() -> void:
 	key = true
@@ -59,10 +69,21 @@ func _physics_process(delta: float) -> void:
 
 	velocity.x = direction * current_speed if direction else move_toward(velocity.x, 0, speed)
 	
-	if Input.is_action_just_pressed("move_up") and is_on_floor():
-		velocity.y = jump_velocity
+	if Input.is_action_just_pressed("move_up"):
+		if is_on_floor():
+			velocity.y = jump_velocity
+		else:
+			if rayCastLeftNode.is_colliding() or rayCastRightNode.is_colliding():
+				velocity.y = jump_velocity * 0.8
+				justWallJumped = true
+				timerNode.start(wall_jump_time)
+
+			if rayCastLeftNode.is_colliding():
+				velocity.x = wall_jump_power
+			if rayCastRightNode.is_colliding():
+				velocity.x = -wall_jump_power
 	
-	if Input.is_action_just_released("move_up") and velocity.y < 0:
+	if (Input.is_action_just_released("move_up") and not justWallJumped) and velocity.y < 0:
 		velocity.y = jump_velocity / short_hop_divisor
 	
 	move_and_slide()
