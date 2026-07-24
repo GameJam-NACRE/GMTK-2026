@@ -3,11 +3,13 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 @export var speed = 300.0
+@export var run_speed = 500.0
 @export var jump_velocity = -500.0
 @export var short_hop_divisor = 4.0
 @export var attack_speed_scale = 1.5
 
 var is_attacking = false
+var is_running = false
 
 func _ready() -> void:
 	add_to_group("player")
@@ -18,7 +20,11 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	var direction := Input.get_axis("move_left", "move_right")
-	velocity.x = direction * speed if direction else move_toward(velocity.x, 0, speed)
+	is_running = Input.is_action_pressed("run") and direction != 0
+ 
+	var current_speed = run_speed if is_running else speed
+
+	velocity.x = direction * current_speed if direction else move_toward(velocity.x, 0, speed)
 	
 	if Input.is_action_just_pressed("move_up") and is_on_floor():
 		velocity.y = jump_velocity
@@ -46,6 +52,8 @@ func _physics_process(delta: float) -> void:
 
 	if not is_on_floor():
 		animated_sprite_2d.animation = "jump"
+	elif is_running:
+		animated_sprite_2d.animation = "run"
 	elif velocity.x > 1 or velocity.x < -1:
 		animated_sprite_2d.animation = "walk"
 	else:
