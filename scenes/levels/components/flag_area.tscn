@@ -1,15 +1,24 @@
 [gd_scene format=3 uid="uid://dtpj0mi1s2763"]
 
 [ext_resource type="Script" uid="uid://7gwjgqdwmiql" path="res://src/levels/components/flag_area.gd" id="1_1bnsv"]
+[ext_resource type="Texture2D" uid="uid://bgcevghkedboj" path="res://assets/pico-8 assets/img/tilemap_packed.png" id="2_url4l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iyc1q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_15vnu"]
+atlas = ExtResource("2_url4l")
+region = Rect2(104, 32, 8, 8)
 
 [node name="FlagArea" type="Area2D" unique_id=336358493]
 script = ExtResource("1_1bnsv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=587677419]
+scale = Vector2(2, 2)
 shape = SubResource("RectangleShape2D_iyc1q")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1791036243]
+texture_filter = 1
+scale = Vector2(5, 5)
+texture = SubResource("AtlasTexture_15vnu")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
