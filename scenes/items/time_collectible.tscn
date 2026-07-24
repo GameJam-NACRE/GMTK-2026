@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://fxl603dmke47"]
 
 [ext_resource type="Script" uid="uid://6a4bbk6ojaqw" path="res://src/items/time_collectible.gd" id="1_84486"]
+[ext_resource type="PackedScene" uid="uid://dkem8154kulh3" path="res://scenes/items/collectible_sprite_2d.tscn" id="2_7pwg8"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_byafj"]
 radius = 21.095022
@@ -12,4 +13,4 @@ script = ExtResource("1_84486")
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_byafj")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2142791988]
+[node name="CollectibleSprite2D" parent="." unique_id=495970359 instance=ExtResource("2_7pwg8")]

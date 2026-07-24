@@ -30,6 +30,10 @@ signal add_coin()
 @warning_ignore("unused_signal")
 signal add_key()
 
+# Ajoute l'épée au joueur
+@warning_ignore("unused_signal")
+signal add_sword()
+
 # ==== Signaux Level ============
 
 # Indique l'id du Dialogue à lancer
