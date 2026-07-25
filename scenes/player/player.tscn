@@ -607,14 +607,17 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(22, 33.75)
+size = Vector2(28, 26)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs8x0"]
 radius = 19.0
 height = 56.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
+z_index = 1
 script = ExtResource("1_dovo2")
+jump_velocity = -600.0
+short_hop_divisor = 3.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
 texture_filter = 1
@@ -629,7 +632,7 @@ offset = Vector2(-2, -20)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356746501]
-position = Vector2(0, -9)
+position = Vector2(1, -5)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1166877280]
