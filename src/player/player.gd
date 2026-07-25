@@ -2,8 +2,6 @@ extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box: Area2D = $HitBox
-@onready var rayCastLeftNode = $RayCastLeft
-@onready var rayCastRightNode = $RayCastRight
 @onready var timerNode = $Timer
 
 @export var Knockback_force: int = 1
@@ -15,8 +13,9 @@ extends CharacterBody2D
 @export var attack_speed_scale = 1.5
 @export var attack_1_active_frame = 2
 @export var attack_2_active_frame = 3
-@export var wall_jump_power = 1250 
+@export var wall_jump_power = 500
 @export var wall_jump_time = 0.2
+@export var wall_slide_speed = 150.0
 
 var is_attacking = false
 var is_running = false
@@ -67,31 +66,31 @@ func _physics_process(delta: float) -> void:
  
 	var current_speed = run_speed if is_running else speed
 
-	velocity.x = direction * current_speed if direction else move_toward(velocity.x, 0, speed)
+	if not justWallJumped:
+		velocity.x = direction * current_speed if direction else move_toward(velocity.x, 0, speed)
+
+	if direction > 0 and not justWallJumped:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0 and not justWallJumped:
+		animated_sprite_2d.flip_h = true
 	
 	if Input.is_action_just_pressed("move_up"):
 		if is_on_floor():
 			velocity.y = jump_velocity
-		else:
-			if rayCastLeftNode.is_colliding() or rayCastRightNode.is_colliding():
+		elif is_on_wall():
 				velocity.y = jump_velocity * 0.8
+				velocity.x = get_wall_normal().x * wall_jump_power
+				animated_sprite_2d.flip_h = get_wall_normal().x < 0
 				justWallJumped = true
 				timerNode.start(wall_jump_time)
-
-			if rayCastLeftNode.is_colliding():
-				velocity.x = wall_jump_power
-			if rayCastRightNode.is_colliding():
-				velocity.x = -wall_jump_power
 	
 	if (Input.is_action_just_released("move_up") and not justWallJumped) and velocity.y < 0:
 		velocity.y = jump_velocity / short_hop_divisor
 	
+	if is_on_wall() and not is_on_floor() and velocity.y > 0:
+		velocity.y = min(velocity.y, wall_slide_speed)
+	
 	move_and_slide()
-
-	if direction > 0:
-		animated_sprite_2d.flip_h = false
-	elif direction < 0:
-		animated_sprite_2d.flip_h = true
 	
 	if Input.is_action_just_pressed("attack") and not is_attacking:
 		is_attacking = true
@@ -117,6 +116,7 @@ func _on_animated_sprite_2d_animation_finished() -> void:
 	if is_attacking:
 		is_attacking = false
 		hit_box.monitorable = false
+		hit_box_was_active = false
 
 func _on_animated_sprite_2d_frame_changed() -> void:
 	if not is_attacking:
