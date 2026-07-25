@@ -21,6 +21,9 @@ signal countdown_end()
 signal intro_countdown_end()
 
 @warning_ignore("unused_signal")
+signal countdown_final_mode()
+
+@warning_ignore("unused_signal")
 signal countdown_clicker_mode()
 
 @warning_ignore("unused_signal")
@@ -32,6 +35,11 @@ signal stop_countdown()
 @warning_ignore("unused_signal")
 signal end_level_clicker()
 
+@warning_ignore("unused_signal")
+signal send_time_countdown(time: float)
+
+@warning_ignore("unused_signal")
+signal ask_time_countdown()
 # ==== Signaux Player ============
 
 # Ajoute 1 pièce au joueur

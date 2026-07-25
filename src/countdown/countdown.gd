@@ -14,6 +14,9 @@ extends CanvasLayer
 
 @export var critic_countdown: float = 20.0
 
+@export_category("final_level")
+@export var index: int = 3
+
 @onready var panel_container: PanelContainer = $PanelContainer
 @onready var main_label: Label = $PanelContainer/Label
 @onready var intro_label: Label = $IntroLabel
@@ -22,22 +25,35 @@ extends CanvasLayer
 @onready var clicker_label: Label = $CenterContainer/ClickerCountdown/ClickerLabel
 
 var hud_mode_on: bool = true
+var level_ending_triggered: bool = false
 
 const TimeEffectScene = preload("res://scenes/countdown/time_effect.tscn")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	countdown.timeout.connect(_on_countdown_timeout)
 	EventBus.add_time.connect(_on_add_time)
 	EventBus.remove_time.connect(_on_remove_time)
 	EventBus.countdown_clicker_mode.connect(_set_mode_clicker)
 	EventBus.countdown_hud_mode.connect(_set_mode_hud)
+	EventBus.countdown_final_mode.connect(_set_mode_final)
 	EventBus.stop_countdown.connect(_on_stop_countdown)
+	EventBus.ask_time_countdown.connect(_on_ask_time_countdown)
 
-	countdown.start(countdown_start + intro_fade_in_time + intro_stay_time + intro_fade_out_time + main_fade_in_time)
-	play_intro_sequence()
+	var initial_time: float = 0.0
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+	if GameManager.saved_countdown_time > 0.0:
+		initial_time = GameManager.saved_countdown_time
+		GameManager.saved_countdown_time = -1.0 # Réinitialise la réserve après lecture
+	else:
+		initial_time = countdown_start + intro_fade_in_time + intro_stay_time + intro_fade_out_time + main_fade_in_time
+
+	countdown.start(initial_time)
+
+	if GameManager.current_level == -1:
+		play_intro_sequence()
+	elif GameManager.current_level != index:
+		play_classic_sequence()
+
 func _process(_delta: float) -> void:
 	var time_left: float = countdown.time_left
 
@@ -51,7 +67,8 @@ func _process(_delta: float) -> void:
 	intro_label.text = formated_countdown
 	clicker_label.text = formated_countdown
 
-	if time_left <= critic_countdown:
+	if not hud_mode_on and not level_ending_triggered and time_left <= critic_countdown:
+		level_ending_triggered = true
 		countdown.set_paused(false)
 		EventBus.end_level_clicker.emit()
 
@@ -61,18 +78,18 @@ func play_intro_sequence() -> void:
 	intro_label.add_theme_font_size_override("font_size", intro_start_font_size)
 
 	var tween = create_tween()
-
 	tween.tween_property(intro_label, "modulate:a", 1.0, intro_fade_in_time)
-
 	tween.tween_interval(intro_stay_time)
-
 	tween.chain().tween_callback(func(): EventBus.intro_countdown_end.emit())
 	tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
-
 	tween.tween_property(intro_label, "position:y", intro_label.position.y - intro_fade_out_height, intro_fade_out_time)
 	tween.parallel().tween_property(intro_label, "modulate:a", 0.0, intro_fade_out_time)
 	tween.parallel().tween_property(intro_label, "theme_override_font_sizes/font_size", intro_end_font_size, intro_fade_out_time)
+	tween.chain().tween_property(panel_container, "modulate:a", 1.0, main_fade_in_time)
 
+func play_classic_sequence() -> void:
+	var tween = create_tween()
+	intro_label.modulate.a = 0.0
 	tween.chain().tween_property(panel_container, "modulate:a", 1.0, main_fade_in_time)
 
 func _on_stop_countdown() -> void:
@@ -86,7 +103,6 @@ func _on_countdown_timeout() -> void:
 func _set_mode_hud() -> void:
 	if not hud_mode_on:
 		var tween = create_tween()
-
 		tween.tween_property(panel_container, "modulate:a", 1.0, hud_mode_fade_time)
 		tween.parallel().tween_property(clicker_countdown, "modulate:a", 0.0, clicker_mode_fade_time)
 		hud_mode_on = true
@@ -94,34 +110,39 @@ func _set_mode_hud() -> void:
 func _set_mode_clicker() -> void:
 	if hud_mode_on:
 		var tween = create_tween()
-
 		tween.tween_property(panel_container, "modulate:a", 0.0, hud_mode_fade_time)
 		tween.parallel().tween_property(clicker_countdown, "modulate:a", 1.0, clicker_mode_fade_time)
 		hud_mode_on = false
+		level_ending_triggered = false
 
+func _set_mode_final() -> void:
+	if hud_mode_on:
+		var tween = create_tween()
+		panel_container.modulate.a = 0.0
+		tween.tween_property(clicker_countdown, "modulate:a", 1.0, clicker_mode_fade_time)
+		hud_mode_on = false
+		level_ending_triggered = false
 
 func _on_add_time(sec: int) -> void:
 	if countdown.is_stopped():
 		return
-
 	_create_pop_up_effect(sec)
-
 	var new_time = countdown.time_left + sec
 	countdown.start(new_time)
 
 func _on_remove_time(sec: int) -> void:
 	if countdown.is_stopped():
 		return
-
 	_create_pop_up_effect(-sec)
-
 	var new_time = countdown.time_left - sec
-
-	if new_time <= 0.0 :
+	if new_time <= 0.0:
 		countdown.stop()
 		_on_countdown_timeout()
-	else :
+	else:
 		countdown.start(new_time)
+
+func _on_ask_time_countdown() -> void:
+	EventBus.send_time_countdown.emit(countdown.time_left)
 
 func _create_pop_up_effect(amount: int) -> void:
 	var effect = TimeEffectScene.instantiate()
@@ -133,11 +154,7 @@ func _create_pop_up_effect(amount: int) -> void:
 		effect.global_position = clicker_countdown.global_position + (clicker_countdown.size / 2.0)
 	effect.start(amount)
 
-
-
-
 func _unhandled_input(event: InputEvent) -> void:
-	# push_warning("test input pour countdown a enlever")
 	if event is InputEventKey and event.pressed and not event.is_echo():
 		if event.keycode == KEY_P:
 			EventBus.add_time.emit(5)
