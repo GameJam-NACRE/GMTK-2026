@@ -607,17 +607,25 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
+<<<<<<< HEAD
 size = Vector2(28, 26)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs8x0"]
 radius = 19.0
 height = 56.0
+=======
+size = Vector2(5.2, 7.75)
+>>>>>>> levels
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
 z_index = 1
 script = ExtResource("1_dovo2")
+<<<<<<< HEAD
 jump_velocity = -600.0
 short_hop_divisor = 3.0
+=======
+JUMP_VELOCITY = -600.0
+>>>>>>> levels
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
 texture_filter = 1
