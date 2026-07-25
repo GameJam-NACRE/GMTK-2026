@@ -614,6 +614,7 @@ radius = 19.0
 height = 56.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
+floor_snap_length = 10.0
 script = ExtResource("1_dovo2")
 speed = 250.0
 run_speed = 300.0
