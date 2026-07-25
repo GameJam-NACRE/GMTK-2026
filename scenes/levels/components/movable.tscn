@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://btfjcc2s7a1gx"]
+
+[ext_resource type="TileSet" uid="uid://bbq805536q3ed" path="res://assets/tilemaps/main_tileset.tres" id="1_2l7xg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yslv0"]
+size = Vector2(8, 8)
+
+[node name="Movable" type="AnimatableBody2D" unique_id=2044183986]
+scale = Vector2(5, 5)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1960301730]
+tile_set = ExtResource("1_2l7xg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=310913538]
+position = Vector2(4, 4)
+shape = SubResource("RectangleShape2D_yslv0")
