@@ -5,7 +5,6 @@ class_name Level extends Node2D
 @export var screen_fade_in: float
 @export var screen_fade_out : float
 
-@onready var flag_area: Area2D = $FlagArea
 @onready var audio_player: AudioStreamPlayer = $AudioPlayer
 @onready var dialogue_label: RichTextLabel = $UI/MarginContainer/DialogueLabel
 
