@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://1hr53oj0qlme"]
+
+[ext_resource type="Script" uid="uid://c5j3pq4d20i7x" path="res://src/levels/components/flag_area_3d.gd" id="1_3fx0a"]
+[ext_resource type="Texture2D" uid="uid://d0owl5cm21d4w" path="res://assets/pico-8 assets/img/flag_3d.png" id="2_3fx0a"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_yslv0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xq54o"]
+albedo_texture = ExtResource("2_3fx0a")
+uv1_scale = Vector3(2.65, 1.87, 2.625)
+uv1_offset = Vector3(0.11, -0.025, 0)
+texture_filter = 0
+
+[sub_resource type="BoxMesh" id="BoxMesh_yslv0"]
+
+[node name="FlagArea3D" type="Area3D" unique_id=2018023072]
+script = ExtResource("1_3fx0a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=808881375]
+shape = SubResource("BoxShape3D_yslv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1126762195]
+material_override = SubResource("StandardMaterial3D_xq54o")
+mesh = SubResource("BoxMesh_yslv0")

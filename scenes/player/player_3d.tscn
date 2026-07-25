@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dj8nl7sbgjqpi"]
+
+[ext_resource type="Script" uid="uid://bdkvqp722l0hi" path="res://src/player/player_3d.gd" id="1_w63ml"]
+[ext_resource type="Texture2D" uid="uid://blur54ut756dw" path="res://assets/player/Red Guard idle_3D.png" id="2_hdvuw"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yslv0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3wh4"]
+albedo_texture = ExtResource("2_hdvuw")
+heightmap_enabled = true
+heightmap_scale = 16.0
+uv1_scale = Vector3(1.4, 1.4, 1.4)
+texture_filter = 0
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yslv0"]
+
+[node name="Player3D" type="CharacterBody3D" unique_id=1690244227]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+script = ExtResource("1_w63ml")
+jump_velocity = 3.5
+mouse_sensitivity = 0.02
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2091281899]
+shape = SubResource("CapsuleShape3D_yslv0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=815743187]
+material_override = SubResource("StandardMaterial3D_y3wh4")
+mesh = SubResource("CapsuleMesh_yslv0")
+
+[node name="Head" type="Node3D" parent="." unique_id=937695954]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8000001, -0.5813884)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=162640010]
+fov = 53.1
