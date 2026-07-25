@@ -8,5 +8,4 @@ region = Rect2(48, 32, 8, 8)
 
 [node name="CollectibleSprite2D" type="Sprite2D" unique_id=495970359]
 texture_filter = 1
-scale = Vector2(5, 5)
 texture = SubResource("AtlasTexture_hbel3")
