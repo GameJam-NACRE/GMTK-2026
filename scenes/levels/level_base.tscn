@@ -7,14 +7,14 @@
 
 [node name="LevelBase" type="Node2D" unique_id=659112569]
 
-[node name="Player" parent="." unique_id=1775035572 instance=ExtResource("1_d61h5")]
-
-[node name="FlagArea" parent="." unique_id=336358493 instance=ExtResource("3_dje0g")]
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1575191976]
 texture_filter = 1
 scale = Vector2(5, 5)
 tile_set = ExtResource("4_g7p6o")
+
+[node name="Player" parent="." unique_id=1775035572 instance=ExtResource("1_d61h5")]
+
+[node name="FlagArea" parent="." unique_id=336358493 instance=ExtResource("3_dje0g")]
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2078814884]
 

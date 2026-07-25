@@ -10,7 +10,6 @@ var is_collected = false
 func _ready() -> void:
 	self.add_to_group("collectible")
 	set_collision_shape()
-	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):

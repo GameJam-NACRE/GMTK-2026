@@ -1,0 +1,30 @@
+[gd_scene format=4 uid="uid://dkt8ilxdcynk6"]
+
+[ext_resource type="TileSet" uid="uid://bbq805536q3ed" path="res://assets/tilemaps/main_tileset.tres" id="1_mhvtj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yslv0"]
+custom_solver_bias = 1.0
+size = Vector2(8.000001, 48.000008)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ecqj"]
+size = Vector2(20, 119.2)
+
+[node name="Movable" type="AnimatableBody2D" unique_id=2044183986]
+scale = Vector2(5, 5)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1960301730]
+texture_filter = 1
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAQAAAAAAAEAAAACAAQAAAAAAAIAAAACAAQAAAAAAAMAAAACAAQAAAAAAAQAAAACAAQAAAAAAAUAAAACAAQAAAA=")
+tile_set = ExtResource("1_mhvtj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=310913538]
+position = Vector2(3.9999998, 24.000002)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_yslv0")
+
+[node name="TriggerArea" type="Area2D" parent="." unique_id=1801519834]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TriggerArea" unique_id=1242255642]
+position = Vector2(9.999999, -11.599998)
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_3ecqj")
