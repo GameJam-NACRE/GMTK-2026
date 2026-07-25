@@ -5,6 +5,33 @@
 [ext_resource type="FontFile" uid="uid://doc3ynaivimmv" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="4_d61h5"]
 [ext_resource type="TileSet" uid="uid://bbq805536q3ed" path="res://assets/tilemaps/main_tileset.tres" id="4_g7p6o"]
 
+[sub_resource type="Gradient" id="Gradient_u7dbn"]
+offsets = PackedFloat32Array(0.0030487776, 0.7195122, 1)
+colors = PackedColorArray(0.20784314, 0, 0.019607844, 1, 0.7401989, 0.3780899, 0.000105310086, 0.99848896, 1, 0.5985337, 0.29318002, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_3ecqj"]
+gradient = SubResource("Gradient_u7dbn")
+fill_from = Vector2(0, 0.025641026)
+fill_to = Vector2(0.44444445, 1)
+
+[sub_resource type="Gradient" id="Gradient_bwy6f"]
+colors = PackedColorArray(0.5056572, 0.2658733, 4.813075e-07, 0.41960785, 1, 0.19215687, 0.16470589, 0)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vn08v"]
+seed = 16
+frequency = 0.0011
+fractal_type = 2
+fractal_lacunarity = 1.51
+fractal_gain = 0.76
+metadata/_preview_in_3d_space_ = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_15vnu"]
+width = 2000
+noise = SubResource("FastNoiseLite_vn08v")
+color_ramp = SubResource("Gradient_bwy6f")
+seamless = true
+seamless_blend_skirt = 0.68
+
 [node name="LevelBase" type="Node2D" unique_id=659112569]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1575191976]
@@ -36,3 +63,21 @@ theme_override_constants/margin_bottom = 40
 layout_mode = 2
 theme_override_fonts/normal_font = ExtResource("4_d61h5")
 fit_content = true
+
+[node name="Background" type="Node2D" parent="." unique_id=1803448273]
+
+[node name="Parallax2D" type="Parallax2D" parent="Background" unique_id=1363944586]
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D" unique_id=1707457580]
+position = Vector2(559.00006, 304)
+scale = Vector2(17.578125, 10.75)
+texture = SubResource("GradientTexture2D_3ecqj")
+
+[node name="Parallax2D2" type="Parallax2D" parent="Background" unique_id=88477451]
+repeat_size = Vector2(2000, 0)
+autoscroll = Vector2(50, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Parallax2D2" unique_id=1641445132]
+z_index = 1
+position = Vector2(575, 368.00003)
+texture = SubResource("NoiseTexture2D_15vnu")
