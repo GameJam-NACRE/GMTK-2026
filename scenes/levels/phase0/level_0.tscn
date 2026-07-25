@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b7ujbggnhwaas" path="res://src/levels/phase0/level_0.gd" id="1_t37um"]
 [ext_resource type="PackedScene" uid="uid://c2qe3wclb74iq" path="res://scenes/levels/level_base.tscn" id="2_owwfv"]
+[ext_resource type="PackedScene" uid="uid://b0f8nooig72mi" path="res://scenes/enemies/patrol_enemy_0.tscn" id="3_xrnyt"]
 
 [node name="Level0" unique_id=659112569 instance=ExtResource("2_owwfv")]
 script = ExtResource("1_t37um")
@@ -23,3 +24,16 @@ double_jump_power = 350.0
 position = Vector2(3322, -224)
 
 [node name="DialAreas" type="Node2D" parent="." index="3" unique_id=84416281]
+
+[node name="PatrolEnemy" parent="." index="6" unique_id=620113945 instance=ExtResource("3_xrnyt")]
+position = Vector2(-96, 462)
+
+[node name="PointA" parent="PatrolEnemy" index="1" unique_id=834587806]
+position = Vector2(172, 13)
+
+[node name="PatrolEnemy" parent="PatrolEnemy" index="2" unique_id=716057530]
+position = Vector2(86, 16)
+move_speed = 100.0
+max_health = 1
+
+[editable path="PatrolEnemy"]
