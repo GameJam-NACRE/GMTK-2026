@@ -55,10 +55,11 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(40, 35)
+size = Vector2(5.2, 7.75)
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
 script = ExtResource("1_dovo2")
+JUMP_VELOCITY = -600.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
 texture_filter = 1
@@ -68,7 +69,8 @@ animation = &"walk"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356746501]
-position = Vector2(0, 2.5)
+position = Vector2(0, 0.6249994)
+scale = Vector2(5, 5)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=923523403]
