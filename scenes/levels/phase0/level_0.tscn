@@ -17,3 +17,4 @@ position = Vector2(-267, 488)
 position = Vector2(3328, -218)
 
 [node name="DialAreas" type="Node2D" parent="." index="3" unique_id=84416281]
+
