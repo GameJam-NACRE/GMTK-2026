@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://cewjmasixpqhc"]
+
+[ext_resource type="Script" uid="uid://dbg6vnw20tny7" path="res://src/levels/phase3/top_down.gd" id="1_17wi8"]
+[ext_resource type="FontFile" uid="uid://doc3ynaivimmv" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="1_nxnw2"]
+
+[node name="TopDown" type="Node2D" unique_id=680098560]
+script = ExtResource("1_17wi8")
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=740008963]
+
+[node name="MarginContainer" type="MarginContainer" parent="UI" unique_id=350931875]
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 40
+
+[node name="DialogueLabel" type="RichTextLabel" parent="UI/MarginContainer" unique_id=1582790500]
+layout_mode = 2
+mouse_filter = 2
+theme_override_fonts/normal_font = ExtResource("1_nxnw2")
+fit_content = true
+
+[node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1442428264]
+
+[node name="Control" type="Control" parent="." unique_id=1840267754]
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="ColorRect" type="ColorRect" parent="Control" unique_id=1761055242]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=673004165]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -41.0
+offset_top = -145.0
+offset_right = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 100

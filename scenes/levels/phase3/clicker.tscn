@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://cfdjep54fbfmf"]
 
 [ext_resource type="Script" uid="uid://bd4pqsdyt2tr4" path="res://src/levels/phase3/clicker.gd" id="1_mpeau"]
-[ext_resource type="PackedScene" uid="uid://dtpj0mi1s2763" path="res://scenes/levels/components/flag_area.tscn" id="2_xb6x5"]
 [ext_resource type="FontFile" uid="uid://doc3ynaivimmv" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="3_32tr4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32tr4"]
@@ -36,9 +35,6 @@ layout_mode = 2
 mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("3_32tr4")
 fit_content = true
-
-[node name="FlagArea" parent="." unique_id=336358493 instance=ExtResource("2_xb6x5")]
-position = Vector2(-205, 121)
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=1274400788]
 
