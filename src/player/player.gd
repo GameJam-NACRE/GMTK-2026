@@ -125,7 +125,7 @@ func _physics_process(delta: float) -> void:
 	elif is_running:
 		animated_sprite_2d.animation = "run"
 	elif velocity.x > 1 or velocity.x < -1:
-		animated_sprite_2d.animation = "walk"
+		animated_sprite_2d.play("walk")
 	else:
 		animated_sprite_2d.animation = "idle"
 
