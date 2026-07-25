@@ -614,25 +614,22 @@ radius = 19.0
 height = 56.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
-z_index = 1
 script = ExtResource("1_dovo2")
-jump_velocity = -700.0
+double_jump_power = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
 texture_filter = 1
 position = Vector2(1, 8)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_i3pqv")
-animation = &"attack_1"
+animation = &"idle"
 autoplay = "idle"
-frame = 7
-frame_progress = 1.0
+frame_progress = 0.91286844
 offset = Vector2(-2, -20)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356746501]
 position = Vector2(0, -9)
-
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1166877280]
@@ -646,10 +643,9 @@ rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_hs8x0")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=923523403]
-offset = Vector2(0, -100)
-zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
-rotation_smoothing_enabled = true
+
+[node name="Timer" type="Timer" parent="." unique_id=92999850]
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
