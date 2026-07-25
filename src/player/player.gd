@@ -16,11 +16,13 @@ extends CharacterBody2D
 @export var wall_jump_power = 500
 @export var wall_jump_time = 0.2
 @export var wall_slide_speed = 150.0
+@export var double_jump_power = 350.0
 
 var is_attacking = false
 var is_running = false
 var hit_box_was_active = false
 var justWallJumped = false
+var has_double_jumped = false
 
 var is_knocked_back: bool = false
 
@@ -76,6 +78,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("move_up"):
 		if is_on_floor():
+			has_double_jumped = false 
 			velocity.y = jump_velocity
 		elif is_on_wall():
 				velocity.y = jump_velocity * 0.8
@@ -83,6 +86,9 @@ func _physics_process(delta: float) -> void:
 				animated_sprite_2d.flip_h = get_wall_normal().x < 0
 				justWallJumped = true
 				timerNode.start(wall_jump_time)
+		elif not has_double_jumped:
+			velocity.y = -double_jump_power
+			has_double_jumped = true
 	
 	if (Input.is_action_just_released("move_up") and not justWallJumped) and velocity.y < 0:
 		velocity.y = jump_velocity / short_hop_divisor

@@ -615,16 +615,16 @@ height = 56.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
 script = ExtResource("1_dovo2")
+double_jump_power = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
 texture_filter = 1
 position = Vector2(1, 8)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_i3pqv")
-animation = &"attack_1"
+animation = &"idle"
 autoplay = "idle"
-frame = 7
-frame_progress = 1.0
+frame_progress = 0.91286844
 offset = Vector2(-2, -20)
 metadata/_edit_group_ = true
 
