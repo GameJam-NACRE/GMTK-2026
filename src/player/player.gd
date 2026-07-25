@@ -16,11 +16,14 @@ extends CharacterBody2D
 @export var wall_jump_power = 500
 @export var wall_jump_time = 0.2
 @export var wall_slide_speed = 150.0
+@export var double_jump_power = 350.0
 
 var is_attacking = false
 var is_running = false
 var hit_box_was_active = false
 var justWallJumped = false
+var has_double_jumped = false
+var has_5_coins = false
 
 var is_knocked_back: bool = false
 
@@ -45,6 +48,7 @@ func _on_add_key() -> void:
 
 func _on_add_coin() -> void:
 	coins += 1
+	has_5_coins = (coins >= 5)
 
 func _on_use_key() -> void:
 	key = false
@@ -75,26 +79,30 @@ func _physics_process(delta: float) -> void:
  
 	var current_speed = run_speed if is_running else speed
 
-	if not justWallJumped and  not is_knocked_back:
+	if not justWallJumped and not is_knocked_back:
 		velocity.x = direction * current_speed if direction else move_toward(velocity.x, 0, speed)
-
-		if Input.is_action_just_pressed("move_up"):
-			if is_on_floor():
-				velocity.y = jump_velocity
-			elif is_on_wall():
-					velocity.y = jump_velocity * 0.8
-					velocity.x = get_wall_normal().x * wall_jump_power
-					animated_sprite_2d.flip_h = get_wall_normal().x < 0
-					justWallJumped = true
-					timerNode.start(wall_jump_time)
-		
-		if (Input.is_action_just_released("move_up") and not justWallJumped) and velocity.y < 0:
-			velocity.y = jump_velocity / short_hop_divisor
 
 	if direction > 0 and not justWallJumped:
 		animated_sprite_2d.flip_h = false
 	elif direction < 0 and not justWallJumped:
 		animated_sprite_2d.flip_h = true
+	
+	if Input.is_action_just_pressed("move_up") and not is_knocked_back:
+		if is_on_floor():
+			has_double_jumped = false 
+			velocity.y = jump_velocity
+		elif is_on_wall() and not has_5_coins:
+				velocity.y = jump_velocity * 0.8
+				velocity.x = get_wall_normal().x * wall_jump_power
+				animated_sprite_2d.flip_h = get_wall_normal().x < 0
+				justWallJumped = true
+				timerNode.start(wall_jump_time)
+		elif not has_double_jumped and has_5_coins:
+			velocity.y = -double_jump_power
+			has_double_jumped = true
+	
+	if (Input.is_action_just_released("move_up") and (not justWallJumped or not is_knocked_back)) and velocity.y < 0:
+		velocity.y = jump_velocity / short_hop_divisor
 	
 	if is_on_wall() and not is_on_floor() and velocity.y > 0:
 		velocity.y = min(velocity.y, wall_slide_speed)
