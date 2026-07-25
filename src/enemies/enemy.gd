@@ -16,11 +16,18 @@ func _ready() -> void:
 	self.add_to_group("enemy")
 
 	hit_zone.body_entered.connect(_on_body_entered)
+	hit_zone.area_entered.connect(_on_area_entered)
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body.is_in_group("player"):
 		return
 	EventBus.enemy_contact.emit(self.global_position)
+
+func _on_area_entered(area: Area2D) -> void:
+	var hit_box := area as HitBox
+	if hit_box == null:
+		return
+	take_damage(hit_box.damage)
 
 func take_damage(amount: int) -> void:
 	if current_health <= 0:

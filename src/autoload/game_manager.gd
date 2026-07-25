@@ -6,6 +6,7 @@ var level_queue: Array[PackedScene] = [
 	preload("res://scenes/levels/phase0/level_0.tscn"),
 	preload("res://scenes/levels/phase2/level_8.tscn"),
 	preload("res://scenes/levels/phase3/clicker.tscn"),
+	preload("res://scenes/levels/phase4/final.tscn"),
 	]
 
 func _ready() -> void:
@@ -17,10 +18,6 @@ func next_level() -> void :
 		push_warning("FIN DES NIVEAUX")
 		return
 	push_warning("level %d is loading" % [current_level])
-	if "clicker" in level_queue[current_level].resource_path:
-		EventBus.countdown_clicker_mode.emit()
-	else:
-		EventBus.countdown_hud_mode.emit()
 
 	LevelManager.load_level(level_queue[current_level])
 

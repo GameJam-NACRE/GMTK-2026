@@ -29,6 +29,9 @@ signal countdown_hud_mode()
 @warning_ignore("unused_signal")
 signal stop_countdown()
 
+@warning_ignore("unused_signal")
+signal end_level_clicker()
+
 # ==== Signaux Player ============
 
 # Ajoute 1 pièce au joueur
@@ -39,6 +42,17 @@ signal add_coin()
 @warning_ignore("unused_signal")
 signal add_key()
 
+@warning_ignore("unused_signal")
+signal use_key()
+
+@warning_ignore("unused_signal")
+signal no_key()
+
+@warning_ignore("unused_signal")
+signal one_key()
+
+@warning_ignore("unused_signal")
+signal got_key()
 # Ajoute l'épée au joueur
 @warning_ignore("unused_signal")
 signal add_sword()

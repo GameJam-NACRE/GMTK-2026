@@ -1,10 +1,26 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_box: Area2D = $HitBox
+@onready var timerNode = $Timer
 
-@export var SPEED = 300.0
-@export var JUMP_VELOCITY = -400.0
-@export var Knockback_force: int = 1
+
+@export var speed = 300.0
+@export var run_speed = 500.0
+@export var jump_velocity = -500.0
+@export var short_hop_divisor = 4.0
+@export var attack_speed_scale = 1.5
+@export var attack_1_active_frame = 2
+@export var attack_2_active_frame = 3
+@export var knockback_force: int = 1
+@export var wall_jump_power = 500
+@export var wall_jump_time = 0.2
+@export var wall_slide_speed = 150.0
+
+var is_attacking = false
+var is_running = false
+var hit_box_was_active = false
+var justWallJumped = false
 
 var is_knocked_back: bool = false
 
@@ -12,10 +28,17 @@ var key: bool = false
 var coins: int = 0
 
 func _ready() -> void:
-	self.add_to_group("player")
+	add_to_group("player")
+	hit_box.monitorable = false
 	EventBus.add_key.connect(_on_add_key)
+	EventBus.use_key.connect(_on_use_key)
+	EventBus.got_key.connect(_on_got_key)
 	EventBus.add_coin.connect(_on_add_coin)
 	EventBus.enemy_contact.connect(_on_enemy_contact)
+	timerNode.connect('timeout', _on_timer_timeout)
+
+func _on_timer_timeout() -> void:
+	justWallJumped = false
 
 func _on_add_key() -> void:
 	key = true
@@ -26,8 +49,15 @@ func _on_add_coin() -> void:
 func _on_use_key() -> void:
 	key = false
 
+func _on_got_key() -> void:
+	if key:
+		EventBus.one_key.emit()
+	else:
+		EventBus.no_key.emit()
+
+
 func _on_enemy_contact(enemy_pos: Vector2) -> void:
-	var knockback_clamped = clamp(Knockback_force, 0, 10)
+	var knockback_clamped = clamp(knockback_force, 0, 10)
 	velocity = (self.position - enemy_pos).normalized() * (500 * knockback_clamped)
 	if is_on_floor():
 		velocity.y = -(200 * knockback_clamped) 
@@ -36,32 +66,85 @@ func _on_enemy_contact(enemy_pos: Vector2) -> void:
 	is_knocked_back = false
 
 func _physics_process(delta: float) -> void:
-	if velocity.x > 1 or velocity.x < -1:
+
+	if not is_on_floor():
+		velocity += get_gravity() * delta
+
+	var direction := Input.get_axis("move_left", "move_right")
+	is_running = Input.is_action_pressed("run") and direction != 0
+ 
+	var current_speed = run_speed if is_running else speed
+
+	if not justWallJumped and  not is_knocked_back:
+		velocity.x = direction * current_speed if direction else move_toward(velocity.x, 0, speed)
+
+		if Input.is_action_just_pressed("move_up"):
+			if is_on_floor():
+				velocity.y = jump_velocity
+			elif is_on_wall():
+					velocity.y = jump_velocity * 0.8
+					velocity.x = get_wall_normal().x * wall_jump_power
+					animated_sprite_2d.flip_h = get_wall_normal().x < 0
+					justWallJumped = true
+					timerNode.start(wall_jump_time)
+		
+		if (Input.is_action_just_released("move_up") and not justWallJumped) and velocity.y < 0:
+			velocity.y = jump_velocity / short_hop_divisor
+
+	if direction > 0 and not justWallJumped:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0 and not justWallJumped:
+		animated_sprite_2d.flip_h = true
+	
+	if is_on_wall() and not is_on_floor() and velocity.y > 0:
+		velocity.y = min(velocity.y, wall_slide_speed)
+	
+	move_and_slide()
+	
+	if Input.is_action_just_pressed("attack") and not is_attacking:
+		is_attacking = true
+		if is_on_floor():
+			animated_sprite_2d.play("attack_2", attack_speed_scale, false)
+		else:
+			animated_sprite_2d.play("attack_1", attack_speed_scale, false)
+		return
+
+	if is_attacking:
+		return
+
+	if not is_on_floor():
+		animated_sprite_2d.animation = "jump"
+	elif is_running:
+		animated_sprite_2d.animation = "run"
+	elif velocity.x > 1 or velocity.x < -1:
 		animated_sprite_2d.animation = "walk"
 	else:
 		animated_sprite_2d.animation = "idle"
 
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-		animated_sprite_2d.animation = "jump"
+func _on_animated_sprite_2d_animation_finished() -> void:
+	if is_attacking:
+		is_attacking = false
+		hit_box.monitorable = false
+		hit_box_was_active = false
 
-	if Input.is_action_just_pressed("move_up") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-	
-	if Input.is_action_pressed("move_down") and is_on_floor():
-		animated_sprite_2d.animation = "crouch"
+func _on_animated_sprite_2d_frame_changed() -> void:
+	if not is_attacking:
+		return
+ 
+	var anim = animated_sprite_2d.animation
+	var frame = animated_sprite_2d.frame
+ 
+	var is_active_frame = (anim == "attack_1" and frame == attack_1_active_frame) \
+		or (anim == "attack_2" and frame == attack_2_active_frame)
+ 
+	hit_box.monitorable = is_active_frame
 
-	if not is_knocked_back:
-		var direction := Input.get_axis("move_left", "move_right")
-		if direction:
-			velocity.x = direction * SPEED
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-
-		if direction == 1.0:
-			animated_sprite_2d.flip_h = false
-		elif direction == -1.0:
-			animated_sprite_2d.flip_h = true
-
-	move_and_slide()
-	
+	if is_active_frame and not hit_box_was_active:
+		_apply_hit_to_existing_overlaps()
+ 
+	hit_box_was_active = is_active_frame 
+ 
+func _apply_hit_to_existing_overlaps() -> void:
+	for area in hit_box.get_overlapping_areas():
+		if area.name == "HitZone":
+			area.get_parent().take_damage(hit_box.damage)

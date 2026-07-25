@@ -29,6 +29,7 @@ var time_acc: float = 0
 
 func _ready() -> void:
 	super()
+	EventBus.countdown_hud_mode.emit()
 	distance_from_player = flag_distance * CASE
 	
 	if not point_a or not point_b:

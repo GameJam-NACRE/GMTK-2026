@@ -17,7 +17,7 @@ script = ExtResource("1_7dsqq")
 intro_fade_in_time = 0.0
 intro_end_font_size = 50
 main_fade_in_time = 0.0
-critic_countdown = 14.5
+critic_countdown = 65.0
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1429213477]
 modulate = Color(1, 1, 1, 0)
