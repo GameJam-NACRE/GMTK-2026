@@ -614,6 +614,7 @@ radius = 19.0
 height = 56.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
+z_index = 1
 script = ExtResource("1_dovo2")
 jump_velocity = -700.0
 
@@ -631,6 +632,7 @@ metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356746501]
 position = Vector2(0, -9)
+
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1166877280]

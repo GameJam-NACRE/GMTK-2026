@@ -5,7 +5,6 @@
 
 [node name="Level0" unique_id=659112569 instance=ExtResource("2_owwfv")]
 script = ExtResource("1_t37um")
-dialogue_queue = Array[String](["", "", ""])
 
 [node name="TileMapLayer" parent="." index="0" unique_id=1575191976]
 position = Vector2(-1250, -448)
