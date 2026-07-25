@@ -14,6 +14,9 @@ extends CanvasLayer
 
 @export var critic_countdown: float = 20.0
 
+@export_category("final_level")
+@export var index: int = 3
+
 @onready var panel_container: PanelContainer = $PanelContainer
 @onready var main_label: Label = $PanelContainer/Label
 @onready var intro_label: Label = $IntroLabel
@@ -32,6 +35,7 @@ func _ready() -> void:
 	EventBus.remove_time.connect(_on_remove_time)
 	EventBus.countdown_clicker_mode.connect(_set_mode_clicker)
 	EventBus.countdown_hud_mode.connect(_set_mode_hud)
+	EventBus.countdown_final_mode.connect(_set_mode_final)
 	EventBus.stop_countdown.connect(_on_stop_countdown)
 	EventBus.ask_time_countdown.connect(_on_ask_time_countdown)
 
@@ -47,7 +51,7 @@ func _ready() -> void:
 
 	if GameManager.current_level == -1:
 		play_intro_sequence()
-	else:
+	elif GameManager.current_level != index:
 		play_classic_sequence()
 
 func _process(_delta: float) -> void:
@@ -108,6 +112,14 @@ func _set_mode_clicker() -> void:
 		var tween = create_tween()
 		tween.tween_property(panel_container, "modulate:a", 0.0, hud_mode_fade_time)
 		tween.parallel().tween_property(clicker_countdown, "modulate:a", 1.0, clicker_mode_fade_time)
+		hud_mode_on = false
+		level_ending_triggered = false
+
+func _set_mode_final() -> void:
+	if hud_mode_on:
+		var tween = create_tween()
+		panel_container.modulate.a = 0.0
+		tween.tween_property(clicker_countdown, "modulate:a", 1.0, clicker_mode_fade_time)
 		hud_mode_on = false
 		level_ending_triggered = false
 

@@ -21,6 +21,9 @@ signal countdown_end()
 signal intro_countdown_end()
 
 @warning_ignore("unused_signal")
+signal countdown_final_mode()
+
+@warning_ignore("unused_signal")
 signal countdown_clicker_mode()
 
 @warning_ignore("unused_signal")
