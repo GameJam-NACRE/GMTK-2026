@@ -29,6 +29,9 @@ signal countdown_hud_mode()
 @warning_ignore("unused_signal")
 signal stop_countdown()
 
+@warning_ignore("unused_signal")
+signal end_level_clicker()
+
 # ==== Signaux Player ============
 
 # Ajoute 1 pièce au joueur
