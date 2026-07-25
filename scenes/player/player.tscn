@@ -607,7 +607,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0xm2m"]
-size = Vector2(28, 26)
+size = Vector2(26, 26)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs8x0"]
 radius = 19.0
@@ -623,15 +623,13 @@ texture_filter = 1
 position = Vector2(1, 8)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_i3pqv")
-animation = &"attack_1"
+animation = &"idle"
 autoplay = "idle"
-frame = 7
-frame_progress = 1.0
 offset = Vector2(-2, -20)
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=356746501]
-position = Vector2(1, -5)
+position = Vector2(-1, -5)
 shape = SubResource("RectangleShape2D_0xm2m")
 
 [node name="HitBox" type="Area2D" parent="." unique_id=1166877280]
