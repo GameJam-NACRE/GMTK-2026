@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://sovpl6crotce" path="res://scenes/levels/components/dial_area.tscn" id="2_qkbp5"]
 [ext_resource type="PackedScene" uid="uid://fxl603dmke47" path="res://scenes/items/time_collectible.tscn" id="4_l1gp7"]
 [ext_resource type="PackedScene" uid="uid://b0f8nooig72mi" path="res://scenes/enemies/patrol_enemy_0.tscn" id="5_15vnu"]
+[ext_resource type="PackedScene" uid="uid://dickspd1f8h3c" path="res://scenes/items/coin_collectible.tscn" id="6_vn08v"]
 
 [node name="Level0" unique_id=659112569 instance=ExtResource("2_owwfv")]
 script = ExtResource("1_t37um")
@@ -48,5 +49,25 @@ position = Vector2(-63, 10)
 position = Vector2(25, -43)
 move_speed = null
 max_health = null
+
+[node name="CoinCollectible" parent="." index="8" unique_id=1937098084 instance=ExtResource("6_vn08v")]
+position = Vector2(463, 258)
+metadata/_edit_group_ = true
+
+[node name="CoinCollectible2" parent="." index="9" unique_id=1056652101 instance=ExtResource("6_vn08v")]
+position = Vector2(463, 258)
+metadata/_edit_group_ = true
+
+[node name="CoinCollectible3" parent="." index="10" unique_id=1510812018 instance=ExtResource("6_vn08v")]
+position = Vector2(463, 258)
+metadata/_edit_group_ = true
+
+[node name="CoinCollectible4" parent="." index="11" unique_id=823143369 instance=ExtResource("6_vn08v")]
+position = Vector2(463, 258)
+metadata/_edit_group_ = true
+
+[node name="CoinCollectible5" parent="." index="12" unique_id=1862044262 instance=ExtResource("6_vn08v")]
+position = Vector2(463, 258)
+metadata/_edit_group_ = true
 
 [editable path="PatrolEnemy"]
