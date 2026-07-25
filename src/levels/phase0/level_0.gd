@@ -3,3 +3,4 @@ class_name Level0
 
 func _ready() -> void:
 	super()
+	EventBus.countdown_hud_mode.emit()
