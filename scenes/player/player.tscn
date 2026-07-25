@@ -615,6 +615,7 @@ height = 56.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
 script = ExtResource("1_dovo2")
+JUMP_VELOCITY = -600.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
 texture_filter = 1
