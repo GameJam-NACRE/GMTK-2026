@@ -12,8 +12,6 @@ point_b = NodePath("TP-B")
 flag_distance = 3
 wall_speed = 400.0
 clock_frequency = 1.0
-screen_fade_in = 0.5
-screen_fade_out = 0.5
 
 [node name="TileMapLayer" parent="." index="0" unique_id=1575191976]
 z_index = 1
@@ -22,7 +20,7 @@ tile_map_data = PackedByteArray("AAAgAAoAAAAAAAAAAAAgAAkAAAAAAAAAAAAgAAgAAAAAAAA
 [node name="Player" parent="." index="1" unique_id=1775035572]
 position = Vector2(-8, 416)
 
-[node name="Camera2D" parent="Player" index="2" unique_id=923523403]
+[node name="Camera2D" parent="Player" index="3" unique_id=923523403]
 position_smoothing_enabled = false
 rotation_smoothing_enabled = false
 
