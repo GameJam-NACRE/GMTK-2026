@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c0h13owrk2fb8"
-path.s3tc="res://.godot/imported/Clock.png-8aaaeb86840857001d924022d07a7de0.s3tc.ctex"
+uid="uid://co2004jthfxc0"
+path.s3tc="res://.godot/imported/arrow.png-cd9b2be0a2e808286c1dc3619a794d6c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/Clock.png"
-dest_files=["res://.godot/imported/Clock.png-8aaaeb86840857001d924022d07a7de0.s3tc.ctex"]
+source_file="res://assets/pico-8 assets/img/arrow.png"
+dest_files=["res://.godot/imported/arrow.png-cd9b2be0a2e808286c1dc3619a794d6c.s3tc.ctex"]
 
 [params]
 
