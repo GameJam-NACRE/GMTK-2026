@@ -53,6 +53,7 @@ func _process(_delta: float) -> void:
 
 	if time_left <= critic_countdown:
 		countdown.set_paused(false)
+		EventBus.end_level_clicker.emit()
 
 func play_intro_sequence() -> void:
 	panel_container.modulate.a = 0.0
