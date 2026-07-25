@@ -4,6 +4,7 @@ var saved_countdown_time: float = -1.0
 var current_level: int = -1
 
 var level_queue: Array[PackedScene] = [
+	preload("res://scenes/levels/phase3/level_3d.tscn"),
 	preload("res://scenes/levels/phase0/level_0.tscn"),
 	preload("res://scenes/levels/phase2/level_8.tscn"),
 	preload("res://scenes/levels/phase3/clicker.tscn"),
