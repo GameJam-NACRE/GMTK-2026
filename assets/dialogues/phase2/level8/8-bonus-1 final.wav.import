@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://be5s1itba1hl4"
+path="res://.godot/imported/8-bonus-1 final.wav-7a9d8594a9d646cdc1b81c9c6308ebdf.sample"
+
+[deps]
+
+source_file="res://assets/dialogues/phase2/level8/8-bonus-1 final.wav"
+dest_files=["res://.godot/imported/8-bonus-1 final.wav-7a9d8594a9d646cdc1b81c9c6308ebdf.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
