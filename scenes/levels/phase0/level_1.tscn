@@ -51,6 +51,7 @@ position = Vector2(620, -214.4)
 z_index = 1
 position = Vector2(19, -10)
 jump_velocity = -700.0
+wall_jump_power = 0
 double_jump_power = 350.0
 
 [node name="FlagArea" parent="." index="2" unique_id=336358493]
@@ -184,79 +185,60 @@ position = Vector2(720, -128)
 
 [node name="TimeCollectible2" parent="." index="27" unique_id=762727664 instance=ExtResource("7_rxacq")]
 position = Vector2(1040, -128)
-seconds = 10
 
 [node name="TimeCollectible3" parent="." index="28" unique_id=628267447 instance=ExtResource("7_rxacq")]
 position = Vector2(880, -128)
-seconds = 10
 
 [node name="TimeCollectible4" parent="." index="29" unique_id=506536872 instance=ExtResource("7_rxacq")]
 position = Vector2(1200, -128)
-seconds = 10
 
 [node name="TimeCollectible5" parent="." index="30" unique_id=212480788 instance=ExtResource("7_rxacq")]
 position = Vector2(2640, -840)
-seconds = 10
 
 [node name="TimeCollectible6" parent="." index="31" unique_id=397747353 instance=ExtResource("7_rxacq")]
 position = Vector2(1740, -300)
-seconds = 10
 
 [node name="TimeCollectible7" parent="." index="32" unique_id=663853608 instance=ExtResource("7_rxacq")]
 position = Vector2(2640, -760)
-seconds = 10
 
 [node name="TimeCollectible8" parent="." index="33" unique_id=648160204 instance=ExtResource("7_rxacq")]
 position = Vector2(2640, -680)
-seconds = 10
 
 [node name="TimeCollectible9" parent="." index="34" unique_id=1889782524 instance=ExtResource("7_rxacq")]
 position = Vector2(4900, -744)
-seconds = 10
 
 [node name="TimeCollectible10" parent="." index="35" unique_id=1639471424 instance=ExtResource("7_rxacq")]
 position = Vector2(2640, -920)
-seconds = 10
 
 [node name="TimeCollectible11" parent="." index="36" unique_id=1854760187 instance=ExtResource("7_rxacq")]
 position = Vector2(4900, -1060)
-seconds = 10
 
 [node name="TimeCollectible12" parent="." index="37" unique_id=375318804 instance=ExtResource("7_rxacq")]
 position = Vector2(3780, -1180)
-seconds = 10
 
 [node name="TimeCollectible13" parent="." index="38" unique_id=164531135 instance=ExtResource("7_rxacq")]
 position = Vector2(3780, -1020)
-seconds = 10
 
 [node name="TimeCollectible14" parent="." index="39" unique_id=1774699786 instance=ExtResource("7_rxacq")]
 position = Vector2(3776, -860)
-seconds = 10
 
 [node name="TimeCollectible15" parent="." index="40" unique_id=877238387 instance=ExtResource("7_rxacq")]
 position = Vector2(3780, -700)
-seconds = 10
 
 [node name="TimeCollectible16" parent="." index="41" unique_id=1055360190 instance=ExtResource("7_rxacq")]
 position = Vector2(4020, -540)
-seconds = 10
 
 [node name="TimeCollectible17" parent="." index="42" unique_id=1920977317 instance=ExtResource("7_rxacq")]
 position = Vector2(3260, -420)
-seconds = 10
 
 [node name="TimeCollectible18" parent="." index="43" unique_id=1793110624 instance=ExtResource("7_rxacq")]
 position = Vector2(2940, -420)
-seconds = 10
 
 [node name="TimeCollectible19" parent="." index="44" unique_id=782003404 instance=ExtResource("7_rxacq")]
 position = Vector2(3420, -420)
-seconds = 10
 
 [node name="TimeCollectible20" parent="." index="45" unique_id=882460993 instance=ExtResource("7_rxacq")]
 position = Vector2(3100, -420)
-seconds = 10
 
 [editable path="PatrolEnemy"]
 [editable path="PatrolEnemy4"]
