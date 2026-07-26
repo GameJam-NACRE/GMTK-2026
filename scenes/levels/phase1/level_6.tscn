@@ -79,6 +79,8 @@ size = Vector2(28.79999, 16.2)
 [node name="level_6" unique_id=659112569 instance=ExtResource("1_xh4nu")]
 script = ExtResource("2_ekhuv")
 dialogues = Array[ExtResource("3_38p18")]([SubResource("Resource_38p18"), SubResource("Resource_3sjsf"), SubResource("Resource_dy0pr"), SubResource("Resource_t7ntf"), SubResource("Resource_qii4q"), SubResource("Resource_aid2e")])
+screen_fade_in = 0.5
+screen_fade_out = 0.5
 
 [node name="Sprite2D" parent="Background/Parallax2D" parent_id_path=PackedInt32Array(1363944586) index="0" unique_id=1707457580]
 position = Vector2(1168, 1112.0001)

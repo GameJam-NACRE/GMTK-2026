@@ -35,6 +35,8 @@ seamless_blend_skirt = 0.68
 [node name="Level8Ter" unique_id=659112569 instance=ExtResource("1_fdqni")]
 script = ExtResource("2_6cxrp")
 dialogues = Array[ExtResource("3_i12ap")]([SubResource("Resource_yslv0")])
+screen_fade_in = 0.5
+screen_fade_out = 0.5
 
 [node name="Sprite2D" parent="Background/Parallax2D" parent_id_path=PackedInt32Array(1363944586) index="0" unique_id=1707457580]
 position = Vector2(-1662.1251, 866.99994)

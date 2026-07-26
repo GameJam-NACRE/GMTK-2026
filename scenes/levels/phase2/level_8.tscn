@@ -83,6 +83,8 @@ flag_distance = 3
 wall_speed = 400.0
 clock_frequency = 1.0
 dialogues = Array[ExtResource("3_ouwni")]([SubResource("Resource_jtd4y"), SubResource("Resource_ouwni"), SubResource("Resource_npuvq"), SubResource("Resource_x1bqp"), SubResource("Resource_ef6hu"), SubResource("Resource_m0ybf"), SubResource("Resource_0np6q")])
+screen_fade_in = 0.5
+screen_fade_out = 0.5
 
 [node name="Background" parent="." index="0" unique_id=1803448273]
 z_index = -4

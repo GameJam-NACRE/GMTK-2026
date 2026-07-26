@@ -26,6 +26,8 @@ metadata/_custom_type_script = "uid://bf42h8c1fsmmw"
 [node name="level_4" unique_id=659112569 instance=ExtResource("1_rvtlm")]
 script = ExtResource("2_s7ve3")
 dialogues = Array[ExtResource("3_4ld1b")]([SubResource("Resource_qkm74"), SubResource("Resource_4ld1b")])
+screen_fade_in = 0.5
+screen_fade_out = 0.5
 
 [node name="Sprite2D" parent="Background/Parallax2D" parent_id_path=PackedInt32Array(1363944586) index="0" unique_id=1707457580]
 z_index = -1

@@ -186,6 +186,7 @@ size = Vector2(354, 120)
 [node name="Level11" unique_id=659112569 instance=ExtResource("1_1jukt")]
 script = ExtResource("2_6u7yq")
 dialogues = Array[ExtResource("3_5mjhn")]([SubResource("Resource_7wqkl"), SubResource("Resource_nsf15"), SubResource("Resource_vvgew"), SubResource("Resource_f47xn"), SubResource("Resource_yhoni")])
+screen_fade_in = 0.5
 screen_fade_out = 0.5
 
 [node name="MovableWallVertical6" parent="." index="0" unique_id=410946994 instance=ExtResource("3_epurn")]
