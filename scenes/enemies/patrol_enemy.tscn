@@ -8,5 +8,5 @@ script = ExtResource("2_bvcjx")
 move_speed = null
 max_health = null
 
-[node name="Sprite2D" parent="." index="0" unique_id=592509327]
+[node name="AnimatedSprite2D" parent="." index="0" unique_id=592509327]
 animation = &"idle"

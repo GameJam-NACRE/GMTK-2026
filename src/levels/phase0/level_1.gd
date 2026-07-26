@@ -4,3 +4,4 @@ class_name Level1 extends Level
 func _ready() -> void:
 	super()
 	EventBus.countdown_hud_mode.emit()
+	EventBus.launch_dialogue.emit(0)

@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box: Area2D = $HitBox
@@ -74,6 +75,8 @@ func _on_add_key() -> void:
 func _on_add_coin() -> void:
 	coins += 1
 	has_5_coins = (coins >= 5)
+	if has_5_coins:
+		EventBus.has_5_coins.emit()
 
 func _on_use_key() -> void:
 	key = false

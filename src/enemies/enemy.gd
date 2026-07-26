@@ -25,11 +25,12 @@ func _on_body_entered(body: Node2D) -> void:
 	EventBus.enemy_contact.emit(self.global_position)
 
 func _on_area_entered(area: Area2D) -> void:
-	if is_dead:
+	if is_dead or !area.is_in_group("player_hitbox"):
 		return
 	var hit_box := area as HitBox
 	if hit_box == null:
 		return
+	
 	take_damage(hit_box.damage)
 
 func take_damage(amount: int) -> void:
@@ -53,8 +54,12 @@ func _physics_process(delta: float) -> void:
 
 func die() -> void:
 	died.emit()
+	EventBus.add_time.emit(5)
+
 	is_dead = true
-	set_deferred("disabled", true)
+	collision_shape.set_deferred("disabled", true)
+	hit_zone.set_deferred("monitoring", false)
+	hit_zone.set_deferred("monitorable", false)
 	animated_sprite_2d.animation = "die"
 	await animated_sprite_2d.animation_finished
 	animated_sprite_2d.stop()

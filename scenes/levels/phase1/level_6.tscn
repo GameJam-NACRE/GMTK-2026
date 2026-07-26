@@ -56,7 +56,7 @@ scroll_offset = Vector2(-253, -8)
 
 [node name="Sprite2D" parent="Background/Parallax2D" index="0" unique_id=1707457580]
 z_index = -1
-position = Vector2(624.00006, 622.5)
+position = Vector2(569, 554)
 scale = Vector2(61.312496, 45.42188)
 
 [node name="Parallax2D2" parent="Background" index="1" unique_id=88477451]
@@ -213,37 +213,37 @@ position = Vector2(30.000004, 30)
 position = Vector2(-1802.6667, -455.33334)
 
 [node name="TimeCollectible" parent="." index="22" unique_id=1478047219 instance=ExtResource("8_g33ww")]
-position = Vector2(-887, 547)
+position = Vector2(-897, 647)
 
 [node name="TimeCollectible2" parent="." index="23" unique_id=1013370672 instance=ExtResource("8_g33ww")]
-position = Vector2(-887, 547)
+position = Vector2(-873, 643)
 
 [node name="TimeCollectible3" parent="." index="24" unique_id=164142663 instance=ExtResource("8_g33ww")]
-position = Vector2(-887, 547)
+position = Vector2(-855, 613)
 
 [node name="TimeCollectible4" parent="." index="25" unique_id=1807918269 instance=ExtResource("8_g33ww")]
-position = Vector2(-894, 524)
+position = Vector2(-910, 666)
 
 [node name="TimeCollectible5" parent="." index="26" unique_id=821514063 instance=ExtResource("8_g33ww")]
-position = Vector2(-911, 546)
+position = Vector2(-873, 651)
 
 [node name="TimeCollectible6" parent="." index="27" unique_id=758687733 instance=ExtResource("8_g33ww")]
-position = Vector2(-862, 530)
+position = Vector2(-819, 592)
 
 [node name="TimeCollectible7" parent="." index="28" unique_id=2086713270 instance=ExtResource("8_g33ww")]
-position = Vector2(-839, 551)
+position = Vector2(-851, 629)
 
 [node name="TimeCollectible8" parent="." index="29" unique_id=1746223946 instance=ExtResource("8_g33ww")]
-position = Vector2(-923, 527)
+position = Vector2(-867, 632)
 
 [node name="TimeCollectible9" parent="." index="30" unique_id=621758861 instance=ExtResource("8_g33ww")]
-position = Vector2(-830, 527)
+position = Vector2(-829, 612)
 
 [node name="TimeCollectible10" parent="." index="31" unique_id=1987096588 instance=ExtResource("8_g33ww")]
-position = Vector2(-904, 574)
+position = Vector2(-891, 666)
 
 [node name="TimeCollectible11" parent="." index="32" unique_id=1779636633 instance=ExtResource("8_g33ww")]
-position = Vector2(-938, 568)
+position = Vector2(-922, 688)
 
 [node name="Arrow" parent="." index="33" unique_id=293278525 instance=ExtResource("9_la37r")]
 position = Vector2(-976, 635)
