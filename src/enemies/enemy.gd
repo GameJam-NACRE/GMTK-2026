@@ -55,8 +55,11 @@ func _physics_process(delta: float) -> void:
 func die() -> void:
 	died.emit()
 	EventBus.add_time.emit(5)
+
 	is_dead = true
-	set_deferred("disabled", true)
+	collision_shape.set_deferred("disabled", true)
+	hit_zone.set_deferred("monitoring", false)
+	hit_zone.set_deferred("monitorable", false)
 	animated_sprite_2d.animation = "die"
 	await animated_sprite_2d.animation_finished
 	animated_sprite_2d.stop()

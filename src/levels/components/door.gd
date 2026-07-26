@@ -1,4 +1,5 @@
 extends Area2D
+class_name Door
 
 @export var is_open: bool = false
 @export var dialogue_id: int = 0
@@ -11,8 +12,6 @@ var player_in_zone: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)
-	body_exited.connect(_on_body_exited)
 	EventBus.no_key.connect(_on_no_key)
 	EventBus.one_key.connect(_on_one_key)
 
@@ -35,7 +34,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_no_key() -> void:
-	EventBus.launch_dialogue.emit(dialogue_id)
+	if dialogue_id >= 0:
+		EventBus.launch_dialogue.emit(dialogue_id)
 
 func _on_one_key() -> void:
 	is_open = true
