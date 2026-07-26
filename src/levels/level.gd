@@ -62,7 +62,9 @@ func _animate_and_hide_subtitles(data: DialogueData) -> void:
 		active_dialogue_tween.tween_property(dialogue_label, "visible_characters", i + 1, data.dial_char_speed)
 		
 		var current_char = text_content[i]
-		if current_char in [".", "!", "?", ":"]:
+		if current_char == "." and (i != 0 and text_content[i - 1] == "."):
+			continue
+		elif current_char in [".", "!", "?", ":"]:
 			active_dialogue_tween.tween_interval(data.dial_long_pause)
 		elif current_char in [",", ";"]:
 			active_dialogue_tween.tween_interval(data.dial_short_pause)

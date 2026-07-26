@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bggyjluggipy"]
+
+[ext_resource type="Script" uid="uid://cpp7ogwoxil7l" path="res://src/levels/components/falling_obstacle.gd" id="1_aa7sv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gfr0u"]
+size = Vector2(16.1, 16.1)
+
+[node name="Obstacle" type="Area2D" unique_id=1139740949]
+script = ExtResource("1_aa7sv")
+fall_gravity = 300.0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1874981635]
+texture_filter = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=267292618]
+shape = SubResource("RectangleShape2D_gfr0u")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1770907245]
