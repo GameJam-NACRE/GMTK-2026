@@ -6,15 +6,15 @@
 [ext_resource type="TileSet" uid="uid://bbq805536q3ed" path="res://assets/tilemaps/main_tileset.tres" id="4_g7p6o"]
 
 [sub_resource type="Gradient" id="Gradient_u7dbn"]
-offsets = PackedFloat32Array(0, 0.44, 0.73538464)
-colors = PackedColorArray(0.27610233, 0.08569122, 0.18361422, 1, 0.49634194, 0.17830086, 0.42198995, 1, 0.7401989, 0.3780899, 0.000105310086, 0.99848896)
+offsets = PackedFloat32Array(0, 0.3476923, 0.9753846)
+colors = PackedColorArray(0.20562133, 0.055471957, 0.13273731, 1, 0.7254902, 0.49019608, 0.09019608, 0.9019608, 1, 0.8684777, 0.44924998, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3ecqj"]
 gradient = SubResource("Gradient_u7dbn")
 fill_from = Vector2(0, 1)
 
 [sub_resource type="Gradient" id="Gradient_bwy6f"]
-colors = PackedColorArray(0.57270527, 0, 0.30422974, 0.41960785, 1, 0.19215687, 0.16470589, 0)
+colors = PackedColorArray(0.9926935, 0.5445405, 0.33501014, 0.41960785, 1, 0.19215687, 0.16470589, 0)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_vn08v"]
 seed = 16
