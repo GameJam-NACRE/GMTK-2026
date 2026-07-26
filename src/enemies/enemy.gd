@@ -25,11 +25,13 @@ func _on_body_entered(body: Node2D) -> void:
 	EventBus.enemy_contact.emit(self.global_position)
 
 func _on_area_entered(area: Area2D) -> void:
+	print("Bob meurt")
 	if is_dead:
 		return
 	var hit_box := area as HitBox
 	if hit_box == null:
 		return
+	
 	take_damage(hit_box.damage)
 
 func take_damage(amount: int) -> void:

@@ -13,7 +13,7 @@ func _ready() -> void:
 	target = point_b
 
 func _physics_process(delta: float) -> void:
-	if is_dead:
+	if is_dead or !target:
 		return
 	var direction_x = sign(target.global_position.x - global_position.x)
 	velocity.x = direction_x * move_speed
