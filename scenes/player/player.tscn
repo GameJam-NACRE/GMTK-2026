@@ -618,8 +618,9 @@ floor_snap_length = 10.0
 script = ExtResource("1_dovo2")
 speed = 250.0
 run_speed = 300.0
+jump_velocity = -700.0
 wall_jump_power = 400
-double_jump_power = 400.0
+double_jump_power = 1000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
 texture_filter = 1

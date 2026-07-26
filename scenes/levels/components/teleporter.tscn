@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://tge174ik2u6w"]
+
+[ext_resource type="Script" uid="uid://d2en1pn3cpmmq" path="res://src/levels/components/teleporter.gd" id="1_l1p0l"]
+
+[node name="Teleporter" type="Node2D" unique_id=1350530922]
+script = ExtResource("1_l1p0l")
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1840937603]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1803255510]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2074723293]
