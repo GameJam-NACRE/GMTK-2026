@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://br0aid4om2d2n"
+path="res://.godot/imported/11-4 final.mp3-bef297c60759d3a677b7a2279c23adbd.mp3str"
+
+[deps]
+
+source_file="res://assets/dialogues/phase2/level11/11-4 final.mp3"
+dest_files=["res://.godot/imported/11-4 final.mp3-bef297c60759d3a677b7a2279c23adbd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
