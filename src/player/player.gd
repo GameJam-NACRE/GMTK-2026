@@ -120,8 +120,10 @@ func _process_platformer_physic(delta: float) -> void:
 
 	if direction > 0 and not justWallJumped:
 		animated_sprite_2d.flip_h = false
+		hit_box.position.x = abs(hit_box.position.x)
 	elif direction < 0 and not justWallJumped:
 		animated_sprite_2d.flip_h = true
+		hit_box.position.x = -abs(hit_box.position.x)
 	
 	if Input.is_action_just_pressed("move_up") and not is_knocked_back:
 		if is_on_floor():
@@ -131,6 +133,7 @@ func _process_platformer_physic(delta: float) -> void:
 			velocity.y = jump_velocity * 0.8
 			velocity.x = get_wall_normal().x * wall_jump_power
 			animated_sprite_2d.flip_h = get_wall_normal().x < 0
+			hit_box.position.x = abs(hit_box.position.x) * (-1 if get_wall_normal().x < 0 else 1)
 			justWallJumped = true
 			timerNode.start(wall_jump_time)
 		elif not has_double_jumped and has_5_coins:
