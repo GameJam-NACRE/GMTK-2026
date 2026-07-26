@@ -614,7 +614,12 @@ radius = 19.0
 height = 56.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
+position = Vector2(0, 67)
 script = ExtResource("1_dovo2")
+speed = 250.0
+run_speed = 300.0
+jump_velocity = -700.0
+wall_jump_power = 400
 double_jump_power = 400.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
@@ -624,7 +629,8 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.91286844
+frame = 5
+frame_progress = 0.9060981
 offset = Vector2(-2, -20)
 metadata/_edit_group_ = true
 

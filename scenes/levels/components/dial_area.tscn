@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://rvteedfos66c" path="res://src/levels/components/dial_area.gd" id="1_sdf37"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yslv0"]
+size = Vector2(87.5, 76)
 
 [node name="DialArea" type="Area2D" unique_id=868760559]
 script = ExtResource("1_sdf37")
