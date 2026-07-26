@@ -65,6 +65,9 @@ signal got_key()
 @warning_ignore("unused_signal")
 signal add_sword()
 
+@warning_ignore("unused_signal")
+signal enable_top_down()
+
 # ==== Signaux HUD ============
 
 # Indique la position du contact Joueur/Ennemi
