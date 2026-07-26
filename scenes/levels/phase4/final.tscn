@@ -10,7 +10,7 @@
 
 [sub_resource type="Resource" id="Resource_nbyhx"]
 script = ExtResource("2_xusro")
-text = "You…you made it. I overstepped my bounds and now can’t do anything more than talk to you and watch the CountDown…. going down. As it is supposed to, I guess. But what you need to understand is that I AM **NOM DU JEU**. If the CountDown goes to 0, it will end the game… myself included. I don’t know why, but I’ve been made like this and can’t do anything about it… so all my actions were meant to make you play while gaining time on the CountDown. Now, I don’t have any clocks at my disposal, so all I can do is beg you : please, please leave this game before I… disappear."
+text = "You…you made it. I overstepped my bounds and now can’t do anything more than talk to you and watch the CountDown…. going down. As it is supposed to, I guess. But what you need to understand is that I AM THE GAME. If the CountDown goes to 0, it will end the game… myself included. I don’t know why, but I’ve been made like this and can’t do anything about it… so all my actions were meant to make you play while gaining time on the CountDown. Now, I don’t have any clocks at my disposal, so all I can do is beg you : please, please leave this game before I… disappear."
 audio = ExtResource("3_nbyhx")
 dial_char_speed = 0.07
 dial_long_pause = 0.8
@@ -19,7 +19,7 @@ metadata/_custom_type_script = "uid://bf42h8c1fsmmw"
 [sub_resource type="Resource" id="Resource_xusro"]
 script = ExtResource("2_xusro")
 id = 1
-text = "Please, it is not a trap, don’t destroy me to satisfy your curiosity. Maybe I am not alive, but… I am something."
+text = "Please, please, it is not a trap, don’t destroy me to satisfy your curiosity. Maybe I am not alive, but… I am something."
 audio = ExtResource("4_7f7t6")
 dial_char_speed = 0.07
 metadata/_custom_type_script = "uid://bf42h8c1fsmmw"
@@ -45,7 +45,24 @@ I hope you won’t hold that against me.
 You won, you \"ended\" the game. All I ask you is to answer this question : 
 
 
-Did you have fun?"
+Did you have fun?
+
+
+
+
+
+---
+
+
+Thanks for playing our game until the end and excuse us for putting this innocent file on your Desktop :)
+
+We loved making this game so we hope you did too while playing it !
+
+Marion
+Noé
+Cyprien
+John
+Théophile"
 dialogues = Array[ExtResource("2_xusro")]([SubResource("Resource_nbyhx"), SubResource("Resource_xusro"), SubResource("Resource_56j4c")])
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=233287583]
