@@ -12,8 +12,6 @@ point_b = NodePath("TP-B")
 flag_distance = 3
 wall_speed = 400.0
 clock_frequency = 1.0
-screen_fade_in = 0.5
-screen_fade_out = 0.5
 
 [node name="TileMapLayer" parent="." index="0" unique_id=1575191976]
 z_index = 1

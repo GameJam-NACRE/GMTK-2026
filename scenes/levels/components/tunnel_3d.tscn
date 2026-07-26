@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://c2bggvfwniq4g"]
+
+[ext_resource type="Texture2D" uid="uid://bgcevghkedboj" path="res://assets/pico-8 assets/img/tilemap_packed.png" id="1_f3bgt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f3bgt"]
+albedo_texture = ExtResource("1_f3bgt")
+uv1_scale = Vector3(-0.49, 0.175, -0.02)
+uv1_offset = Vector3(0.16, 0.41, 0.295)
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wykvd"]
+albedo_texture = ExtResource("1_f3bgt")
+uv1_scale = Vector3(0.245, 0.14, -0.02)
+uv1_offset = Vector3(-0.375, 0.395, 0.295)
+texture_filter = 0
+
+[node name="Tunnel3D" type="Node3D" unique_id=675113076]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=1587553486]
+transform = Transform3D(1.725, 0, 0, 0, -7.540215e-08, -1.725, 0, 1.725, -7.540215e-08, 0, 0, 0)
+use_collision = true
+sides = 20
+material = SubResource("StandardMaterial3D_f3bgt")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGCylinder3D" unique_id=2136808001]
+operation = 2
+radius = 0.45
+sides = 11
+material = SubResource("StandardMaterial3D_wykvd")

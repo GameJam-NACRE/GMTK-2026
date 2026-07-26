@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://be4lqgv6x6b2x"]
+
+[ext_resource type="Texture2D" uid="uid://bgcevghkedboj" path="res://assets/pico-8 assets/img/tilemap_packed.png" id="1_urlsp"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_yslv0"]
+size = Vector3(1, 1, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_seybc"]
+albedo_texture = ExtResource("1_urlsp")
+uv1_scale = Vector3(-0.055, 0.535, -0.02)
+uv1_offset = Vector3(0.27, 0.005, 0.295)
+texture_filter = 0
+
+[node name="Wall3D" type="Node3D" unique_id=675113076]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="." unique_id=1287160297]
+use_collision = true
+mesh = SubResource("BoxMesh_yslv0")
+material = SubResource("StandardMaterial3D_seybc")

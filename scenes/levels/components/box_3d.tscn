@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dpp427qsnfrw2"]
+
+[ext_resource type="Texture2D" uid="uid://c0h13owrk2fb8" path="res://assets/items/Clock.png" id="1_og15i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2xnld"]
+albedo_texture = ExtResource("1_og15i")
+uv1_scale = Vector3(-0.36, 1.095, 0.6)
+uv1_offset = Vector3(-0.275, 0, 0)
+texture_filter = 0
+
+[node name="Box3D" type="Node3D" unique_id=2100831732]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=318509139]
+use_collision = true
+material = SubResource("StandardMaterial3D_2xnld")
