@@ -6,8 +6,8 @@
 [ext_resource type="TileSet" uid="uid://bbq805536q3ed" path="res://assets/tilemaps/main_tileset.tres" id="4_g7p6o"]
 
 [sub_resource type="Gradient" id="Gradient_u7dbn"]
-offsets = PackedFloat32Array(0, 0.52, 0.9753846)
-colors = PackedColorArray(0.20562133, 0.055471957, 0.13273731, 1, 0.9705867, 0.39566702, 0.5025784, 0.91063684, 0.15070835, 0.11475854, 1.2032688e-08, 1)
+offsets = PackedFloat32Array(0, 0.42461538, 0.63076925, 0.9753846)
+colors = PackedColorArray(0.20562133, 0.055471957, 0.13273731, 1, 0.837823, 0.49246633, 0.06956253, 0.9159246, 0.9705867, 0.39566702, 0.5025784, 0.91063684, 0.15070835, 0.11475854, 1.2032688e-08, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_3ecqj"]
 gradient = SubResource("Gradient_u7dbn")

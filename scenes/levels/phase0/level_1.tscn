@@ -82,6 +82,8 @@ seamless_blend_skirt = 0.68
 [node name="Level1" unique_id=659112569 instance=ExtResource("1_bkwka")]
 script = ExtResource("2_22cpc")
 dialogues = Array[ExtResource("3_l5rba")]([SubResource("Resource_l5rba"), SubResource("Resource_in5ib"), SubResource("Resource_vnqil"), SubResource("Resource_rxacq"), SubResource("Resource_gf0b5")])
+screen_fade_in = 0.5
+screen_fade_out = 0.5
 
 [node name="Sprite2D" parent="Background/Parallax2D" parent_id_path=PackedInt32Array(1363944586) index="0" unique_id=1707457580]
 position = Vector2(2370, -614)
@@ -102,7 +104,6 @@ scale = Vector2(5, 5)
 [node name="Player" parent="." index="3" unique_id=1775035572]
 z_index = 1
 position = Vector2(19, -10)
-wall_jump_power = 0
 double_jump_power = 350.0
 
 [node name="DialAreas" type="Node2D" parent="." index="4" unique_id=1102924712]
