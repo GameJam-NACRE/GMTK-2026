@@ -228,3 +228,12 @@ func _apply_hit_to_existing_overlaps() -> void:
 	for area in hit_box.get_overlapping_areas():
 		if area.name == "HitZone":
 			area.get_parent().take_damage(hit_box.damage)
+		
+		elif area.is_in_group("destructible") and area.has_method("take_damage"):
+			area.take_damage(1)
+		elif area.get_parent() and area.get_parent().is_in_group("destructible") and area.get_parent().has_method("take_damage"):
+			area.get_parent().take_damage(1)
+
+	for body in hit_box.get_overlapping_bodies():
+		if body.is_in_group("destructible") and body.has_method("take_damage"):
+			body.take_damage(1)
