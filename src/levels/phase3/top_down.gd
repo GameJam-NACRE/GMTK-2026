@@ -14,12 +14,18 @@ var camera: Camera2D = null
 func _ready() -> void:
 	super()
 	EventBus.enable_top_down.emit()
+	EventBus.launch_dialogue.emit(0)
 	if has_node("Player/Camera2D"):
 		camera = $Player/Camera2D
 	else:
 		camera = get_viewport().get_camera_2d()
 
 	camera.offset.y = -200.0
+
+	await get_tree().create_timer(25.0).timeout
+
+	EventBus.launch_dialogue.emit(1)
+	
 
 func _process(delta: float) -> void:
 	var movement = Vector2.UP * current_speed * delta
