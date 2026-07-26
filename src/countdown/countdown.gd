@@ -208,10 +208,3 @@ func _create_pop_up_effect(amount: int) -> void:
 		clicker_label.add_child(effect)
 		effect.global_position = clicker_countdown.global_position + (clicker_countdown.size / 2.0)
 	effect.start(amount)
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey and event.pressed and not event.is_echo():
-		if event.keycode == KEY_P:
-			EventBus.add_time.emit(5)
-		if event.keycode == KEY_O:
-			EventBus.remove_time.emit(5)

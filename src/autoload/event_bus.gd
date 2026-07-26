@@ -47,6 +47,9 @@ signal ask_time_countdown()
 @warning_ignore("unused_signal")
 signal add_coin()
 
+@warning_ignore("unused_signal")
+signal has_5_coins()
+
 # Ajoute 1 key au joueur
 @warning_ignore("unused_signal")
 signal add_key()

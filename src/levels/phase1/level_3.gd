@@ -16,6 +16,8 @@ func _ready() -> void:
 	super()
 	EventBus.countdown_hud_mode.emit()
 	EventBus.countdown_critical.connect(_on_countdown_critical)
+	EventBus.has_5_coins.connect(_has_5_coins)
+	player.has_sword = true
  
 	shower_timer.one_shot = true
 	shower_timer.timeout.connect(_on_shower_timer_timeout)
@@ -60,3 +62,6 @@ func add_time_collectible(height_above_player: float, case: int, duration: int) 
 	var target_y = player.global_position.y
 	var tween = create_tween().set_trans(Tween.TRANS_LINEAR)
 	tween.tween_property(time_item, "global_position", Vector2(time_item.global_position.x, target_y), 0.2 * duration)
+
+func _has_5_coins() -> void:
+	EventBus.launch_dialogue.emit(4)

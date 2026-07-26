@@ -46,7 +46,7 @@ animation = &"open"
 
 [node name="DoorInteraction" type="CollisionShape2D" parent="." unique_id=1443226175]
 position = Vector2(7, -8)
-scale = Vector2(2, 2)
+scale = Vector2(0.75, 0.75)
 shape = SubResource("RectangleShape2D_5m1g1")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=817654860]

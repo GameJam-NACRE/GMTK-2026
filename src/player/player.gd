@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box: Area2D = $HitBox
@@ -74,6 +75,8 @@ func _on_add_key() -> void:
 func _on_add_coin() -> void:
 	coins += 1
 	has_5_coins = (coins >= 5)
+	if has_5_coins:
+		EventBus.has_5_coins.emit()
 
 func _on_use_key() -> void:
 	key = false
@@ -225,3 +228,12 @@ func _apply_hit_to_existing_overlaps() -> void:
 	for area in hit_box.get_overlapping_areas():
 		if area.name == "HitZone":
 			area.get_parent().take_damage(hit_box.damage)
+		
+		elif area.is_in_group("destructible") and area.has_method("take_damage"):
+			area.take_damage(1)
+		elif area.get_parent() and area.get_parent().is_in_group("destructible") and area.get_parent().has_method("take_damage"):
+			area.get_parent().take_damage(1)
+
+	for body in hit_box.get_overlapping_bodies():
+		if body.is_in_group("destructible") and body.has_method("take_damage"):
+			body.take_damage(1)

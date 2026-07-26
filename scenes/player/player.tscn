@@ -906,8 +906,8 @@ animations = [{
 size = Vector2(22, 33.75)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hs8x0"]
-radius = 19.0
-height = 56.0
+radius = 16.999998
+height = 33.999996
 
 [node name="Player" type="CharacterBody2D" unique_id=1775035572]
 position = Vector2(0, 67)
@@ -917,17 +917,17 @@ speed = 250.0
 run_speed = 300.0
 jump_velocity = -700.0
 wall_jump_power = 400
-double_jump_power = 400.0
+double_jump_power = 1000.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1175913929]
 texture_filter = 1
 position = Vector2(1, 8)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_i3pqv")
-animation = &"run"
+animation = &"attack_2"
 autoplay = "idle"
-frame = 5
-frame_progress = 0.9060981
+frame = 12
+frame_progress = 1.0
 offset = Vector2(-2, -20)
 metadata/_edit_group_ = true
 
@@ -941,7 +941,7 @@ monitorable = false
 script = ExtResource("7_0owmy")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" unique_id=81656407]
-position = Vector2(-26, -19)
+position = Vector2(-25, -17)
 rotation = -1.5707964
 shape = SubResource("CapsuleShape2D_hs8x0")
 

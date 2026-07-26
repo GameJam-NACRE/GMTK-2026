@@ -5,9 +5,16 @@ var current_level: int = -1
 
 var level_queue: Array[PackedScene] = [
 	preload("res://scenes/levels/phase0/level_0.scn"),
+	preload("res://scenes/levels/phase0/level_1.tscn"),
+	preload("res://scenes/levels/phase0/level_2.tscn"),
+	preload("res://scenes/levels/phase1/level_3.tscn"),
+	preload("res://scenes/levels/phase1/level_4.tscn"),
+	preload("res://scenes/levels/phase1/level_6.tscn"),
 	preload("res://scenes/levels/phase2/level_8.tscn"),
 	preload("res://scenes/levels/phase2/level_8_bis.tscn"),
 	preload("res://scenes/levels/phase2/level_8_ter.tscn"),
+	preload("res://scenes/levels/phase2/level_10.tscn"),
+	preload("res://scenes/levels/phase2/level_11.tscn"),
 	preload("res://scenes/levels/phase3/top_down.tscn"),
 	preload("res://scenes/levels/phase3/level_3d.tscn"),
 	preload("res://scenes/levels/phase3/clicker.scn"),
@@ -19,7 +26,6 @@ const SAVE_PATH = "user://gamesave.cfg"
 
 func _ready() -> void:
 	EventBus.level_ended.connect(_on_level_ended)
-	return
 	EventBus.send_time_countdown.connect(_on_send_time_countdown)
 
 	if FileAccess.file_exists(SAVE_PATH):

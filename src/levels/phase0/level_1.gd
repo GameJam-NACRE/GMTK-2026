@@ -15,6 +15,7 @@ var shower_time_acc: float = 0.0
 func _ready() -> void:
 	super()
 	EventBus.countdown_hud_mode.emit()
+	EventBus.launch_dialogue.emit(0)
 	EventBus.countdown_critical.connect(_on_countdown_critical)
  
 	shower_timer.one_shot = true

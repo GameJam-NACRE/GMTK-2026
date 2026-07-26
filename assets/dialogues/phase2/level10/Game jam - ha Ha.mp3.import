@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c051hxy0fj2s3"
+path="res://.godot/imported/Game jam - ha Ha.mp3-f4f429e8bbddb92aacc844c99cf74850.mp3str"
+
+[deps]
+
+source_file="res://assets/dialogues/phase2/level10/Game jam - ha Ha.mp3"
+dest_files=["res://.godot/imported/Game jam - ha Ha.mp3-f4f429e8bbddb92aacc844c99cf74850.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
