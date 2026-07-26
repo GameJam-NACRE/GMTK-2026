@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nakwy"]
 size = Vector2(48, 8)
 
-[node name="MovableWallVertical" type="Node2D" unique_id=410946994]
+[node name="MovableWallHorizontal" type="Node2D" unique_id=410946994]
 scale = Vector2(5, 5)
 script = ExtResource("1_rld0n")
 
