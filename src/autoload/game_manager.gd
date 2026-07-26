@@ -15,6 +15,7 @@ const SAVE_PATH = "user://gamesave.cfg"
 
 func _ready() -> void:
 	EventBus.level_ended.connect(_on_level_ended)
+	return
 	EventBus.send_time_countdown.connect(_on_send_time_countdown)
 
 	if FileAccess.file_exists(SAVE_PATH):
