@@ -96,7 +96,6 @@ tile_map_data = PackedByteArray("AAAAAAMAAAAHAAMAAAABAAIAAAAHAAMAAAACAAEAAAAHAAM
 [node name="Player" parent="." index="2" unique_id=1775035572]
 z_index = 2
 position = Vector2(-2, 107)
-double_jump_power = 1000.0
 
 [node name="FlagArea" parent="." index="3" unique_id=336358493]
 z_index = 3
@@ -158,14 +157,11 @@ scale = Vector2(5.28, 4.975)
 dialogue_id = -1
 key = true
 
-[node name="KeyCollectible" parent="." index="9" unique_id=411868467 instance=ExtResource("3_w616j")]
-position = Vector2(1608, -984)
-
-[node name="KeyCollectible2" parent="." index="10" unique_id=994359045 instance=ExtResource("3_w616j")]
+[node name="KeyCollectible2" parent="." index="9" unique_id=994359045 instance=ExtResource("3_w616j")]
 position = Vector2(240.00002, -1584.0001)
 scale = Vector2(1.505, 1.505)
 
-[node name="PatrolEnemy3" parent="." index="11" unique_id=1987667138 instance=ExtResource("7_axcd2")]
+[node name="PatrolEnemy3" parent="." index="10" unique_id=1987667138 instance=ExtResource("7_axcd2")]
 position = Vector2(680, -1576)
 scale = Vector2(6.16, 6.16)
 move_speed = 100.0
@@ -181,22 +177,22 @@ position = Vector2(5.194805, 1.2987013)
 position = Vector2(5.194805, 1.298706)
 shape = SubResource("CircleShape2D_vlxmd")
 
-[node name="CoinCollectible" parent="." index="12" unique_id=1535139744 instance=ExtResource("6_epd7v")]
+[node name="CoinCollectible" parent="." index="11" unique_id=1535139744 instance=ExtResource("6_epd7v")]
 position = Vector2(1792, -744)
 
-[node name="CoinCollectible2" parent="." index="13" unique_id=1485831859 instance=ExtResource("6_epd7v")]
+[node name="CoinCollectible2" parent="." index="12" unique_id=1485831859 instance=ExtResource("6_epd7v")]
 position = Vector2(1920, -1152)
 
-[node name="CoinCollectible3" parent="." index="14" unique_id=1934834122 instance=ExtResource("6_epd7v")]
+[node name="CoinCollectible3" parent="." index="13" unique_id=1934834122 instance=ExtResource("6_epd7v")]
 position = Vector2(1760, -280)
 
-[node name="CoinCollectible4" parent="." index="15" unique_id=1042192372 instance=ExtResource("6_epd7v")]
+[node name="CoinCollectible4" parent="." index="14" unique_id=1042192372 instance=ExtResource("6_epd7v")]
 position = Vector2(2336, -424)
 
-[node name="CoinCollectible5" parent="." index="16" unique_id=586927641 instance=ExtResource("6_epd7v")]
+[node name="CoinCollectible5" parent="." index="15" unique_id=586927641 instance=ExtResource("6_epd7v")]
 position = Vector2(2376, -1040)
 
-[node name="PatrolEnemy4" parent="." index="17" unique_id=620113945 instance=ExtResource("4_w616j")]
+[node name="PatrolEnemy4" parent="." index="16" unique_id=620113945 instance=ExtResource("4_w616j")]
 position = Vector2(1848, -584)
 
 [node name="PointB" parent="PatrolEnemy4" index="0" unique_id=912521414]
@@ -209,7 +205,7 @@ position = Vector2(-40, 8)
 move_speed = 100.0
 max_health = 1
 
-[node name="PatrolEnemy5" parent="." index="18" unique_id=714468136 instance=ExtResource("4_w616j")]
+[node name="PatrolEnemy5" parent="." index="17" unique_id=714468136 instance=ExtResource("4_w616j")]
 position = Vector2(1928, -584)
 
 [node name="PointB" parent="PatrolEnemy5" index="0" unique_id=912521414]
@@ -223,14 +219,14 @@ position = Vector2(24, 0)
 move_speed = 100.0
 max_health = 1
 
-[node name="PatrolEnemy6" parent="." index="19" unique_id=1836078575 node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("7_axcd2")]
+[node name="PatrolEnemy6" parent="." index="18" unique_id=1836078575 node_paths=PackedStringArray("point_a", "point_b") instance=ExtResource("7_axcd2")]
 position = Vector2(1760, -424)
 point_a = NodePath("../PatrolEnemy4/PointA")
 point_b = NodePath("../PatrolEnemy4/PointB")
 move_speed = 100.0
 max_health = 1
 
-[node name="PatrolEnemy11" parent="." index="20" unique_id=250345009 instance=ExtResource("4_w616j")]
+[node name="PatrolEnemy11" parent="." index="19" unique_id=250345009 instance=ExtResource("4_w616j")]
 position = Vector2(1896, -424)
 
 [node name="PointB" parent="PatrolEnemy11" index="0" unique_id=912521414]
@@ -244,7 +240,7 @@ position = Vector2(-16, 0)
 move_speed = 100.0
 max_health = 1
 
-[node name="PatrolEnemy12" parent="." index="21" unique_id=1354575626 instance=ExtResource("4_w616j")]
+[node name="PatrolEnemy12" parent="." index="20" unique_id=1354575626 instance=ExtResource("4_w616j")]
 position = Vector2(1896, -264)
 
 [node name="PointB" parent="PatrolEnemy12" index="0" unique_id=912521414]
@@ -257,56 +253,56 @@ position = Vector2(-88, 8)
 move_speed = 100.0
 max_health = 1
 
-[node name="TimeCollectible" parent="." index="22" unique_id=1478047219 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible" parent="." index="21" unique_id=1478047219 instance=ExtResource("10_avip2")]
 position = Vector2(-224, -160)
 
-[node name="TimeCollectible2" parent="." index="23" unique_id=1667344266 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible2" parent="." index="22" unique_id=1667344266 instance=ExtResource("10_avip2")]
 position = Vector2(1192, -344)
 
-[node name="TimeCollectible3" parent="." index="24" unique_id=722413814 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible3" parent="." index="23" unique_id=722413814 instance=ExtResource("10_avip2")]
 position = Vector2(1192, -472)
 
-[node name="TimeCollectible4" parent="." index="25" unique_id=1153787997 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible4" parent="." index="24" unique_id=1153787997 instance=ExtResource("10_avip2")]
 position = Vector2(1192, -600)
 
-[node name="TimeCollectible5" parent="." index="26" unique_id=73467080 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible5" parent="." index="25" unique_id=73467080 instance=ExtResource("10_avip2")]
 position = Vector2(2376, -848)
 
-[node name="TimeCollectible6" parent="." index="27" unique_id=1243257509 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible6" parent="." index="26" unique_id=1243257509 instance=ExtResource("10_avip2")]
 position = Vector2(1900, -867)
 
-[node name="TimeCollectible7" parent="." index="28" unique_id=154849467 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible7" parent="." index="27" unique_id=154849467 instance=ExtResource("10_avip2")]
 position = Vector2(1576, -1176)
 
-[node name="TimeCollectible8" parent="." index="29" unique_id=1961536944 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible8" parent="." index="28" unique_id=1961536944 instance=ExtResource("10_avip2")]
 position = Vector2(480, -1624)
 
-[node name="TimeCollectible9" parent="." index="30" unique_id=1086094671 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible9" parent="." index="29" unique_id=1086094671 instance=ExtResource("10_avip2")]
 position = Vector2(480, -1496)
 
-[node name="TimeCollectible10" parent="." index="31" unique_id=2005994283 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible10" parent="." index="30" unique_id=2005994283 instance=ExtResource("10_avip2")]
 position = Vector2(480, -1560)
 
-[node name="TimeCollectible11" parent="." index="32" unique_id=1916110270 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible11" parent="." index="31" unique_id=1916110270 instance=ExtResource("10_avip2")]
 position = Vector2(176, -1168)
 
-[node name="TimeCollectible12" parent="." index="33" unique_id=1042761378 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible12" parent="." index="32" unique_id=1042761378 instance=ExtResource("10_avip2")]
 position = Vector2(176, -1048)
 
-[node name="TimeCollectible13" parent="." index="34" unique_id=1898653995 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible13" parent="." index="33" unique_id=1898653995 instance=ExtResource("10_avip2")]
 position = Vector2(176, -1104)
 
-[node name="TimeCollectible14" parent="." index="35" unique_id=1819235194 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible14" parent="." index="34" unique_id=1819235194 instance=ExtResource("10_avip2")]
 position = Vector2(2504, -1224)
 
-[node name="TimeCollectible15" parent="." index="36" unique_id=301192859 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible15" parent="." index="35" unique_id=301192859 instance=ExtResource("10_avip2")]
 position = Vector2(2256, -1504)
 
-[node name="Music" parent="." index="38" unique_id=1425896056]
+[node name="Music" parent="." index="37" unique_id=1425896056]
 stream = ExtResource("11_toupk")
 volume_db = -12.0
 
-[node name="TimeCollectible16" parent="." index="39" unique_id=835184225 instance=ExtResource("10_avip2")]
+[node name="TimeCollectible16" parent="." index="38" unique_id=835184225 instance=ExtResource("10_avip2")]
 position = Vector2(2544, -1744)
 
 [editable path="PatrolEnemy"]
