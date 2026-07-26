@@ -11,16 +11,18 @@ class_name Level extends Node
 var active_dialogue_tween: Tween
 
 func _ready() -> void:
-	await ScreenFader.fade_in(screen_fade_in)
 	EventBus.launch_dialogue.connect(_on_launch_dialogue)
 	EventBus.flag_reached.connect(_on_flag_reached)
 
 	if dialogue_label:
 		dialogue_label.visible_characters = 0
 
+	await ScreenFader.fade_in(screen_fade_in)
+
 func _on_launch_dialogue(id: int) -> void :
 	var dialogue_data = _get_dialogue_by_id(id)
 
+	print("dial number : ", [id])
 	if dialogue_data == null :
 		push_warning("Level: Dialogue Queue: Wrong Dialogue ID -> ", id)
 		return

@@ -11,7 +11,7 @@ size = Vector2(8, 21)
 script = ExtResource("1_0rj0s")
 
 [node name="CollectibleSprite2D" parent="." unique_id=495970359 instance=ExtResource("1_ebb05")]
-top_level = true
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_v5mxh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131855540]

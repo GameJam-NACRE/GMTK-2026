@@ -2,10 +2,51 @@
 
 [ext_resource type="Script" uid="uid://i43pkftoyfoy" path="res://src/levels/phase4/final.gd" id="1_02svu"]
 [ext_resource type="FontFile" uid="uid://doc3ynaivimmv" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="2_i5gru"]
-[ext_resource type="PackedScene" uid="uid://dtpj0mi1s2763" path="res://scenes/levels/components/flag_area.tscn" id="3_xusro"]
+[ext_resource type="Script" uid="uid://bf42h8c1fsmmw" path="res://src/dialogues/dialogue_data.gd" id="2_xusro"]
+[ext_resource type="AudioStream" uid="uid://cwclrl3fa1wpm" path="res://assets/dialogues/phase4/final-1.mp3" id="3_nbyhx"]
+[ext_resource type="AudioStream" uid="uid://cctclu4y4tdj0" path="res://assets/dialogues/phase4/final-2.mp3" id="4_7f7t6"]
+[ext_resource type="AudioStream" uid="uid://7uyqtj2krwh1" path="res://assets/dialogues/phase4/final-3.mp3" id="5_7f7t6"]
+[ext_resource type="AudioStream" uid="uid://iuoi1fkohh63" path="res://assets/musique/final_sad.wav" id="7_7f7t6"]
+
+[sub_resource type="Resource" id="Resource_nbyhx"]
+script = ExtResource("2_xusro")
+text = "You…you made it. I overstepped my bounds and now can’t do anything more than talk to you and watch the CountDown…. going down. As it is supposed to, I guess. But what you need to understand is that I AM **NOM DU JEU**. If the CountDown goes to 0, it will end the game… myself included. I don’t know why, but I’ve been made like this and can’t do anything about it… so all my actions were meant to make you play while gaining time on the CountDown. Now, I don’t have any clocks at my disposal, so all I can do is beg you : please, please leave this game before I… disappear."
+audio = ExtResource("3_nbyhx")
+dial_char_speed = 0.07
+dial_long_pause = 0.8
+metadata/_custom_type_script = "uid://bf42h8c1fsmmw"
+
+[sub_resource type="Resource" id="Resource_xusro"]
+script = ExtResource("2_xusro")
+id = 1
+text = "Please, it is not a trap, don’t destroy me to satisfy your curiosity. Maybe I am not alive, but… I am something."
+audio = ExtResource("4_7f7t6")
+dial_char_speed = 0.07
+metadata/_custom_type_script = "uid://bf42h8c1fsmmw"
+
+[sub_resource type="Resource" id="Resource_56j4c"]
+script = ExtResource("2_xusro")
+id = 2
+text = "Well, I guess I should have expected that."
+audio = ExtResource("5_7f7t6")
+dial_char_speed = 0.07
+metadata/_custom_type_script = "uid://bf42h8c1fsmmw"
 
 [node name="Final" type="Node2D" unique_id=1828916130]
 script = ExtResource("1_02svu")
+final_text = "There you go, I warned you.
+
+I don’t really blame you, I was just as selfish, trying to lock you into a way of playing that suited me. And clearly, you didn’t like it.
+
+I apologize for my last reactions, but as you can imagine, being threatened to disappear into nothingness even disrupts games.
+
+I hope you won’t hold that against me.
+
+You won, you \"ended\" the game. All I ask you is to answer this question : 
+
+
+Did you have fun?"
+dialogues = Array[ExtResource("2_xusro")]([SubResource("Resource_nbyhx"), SubResource("Resource_xusro"), SubResource("Resource_56j4c")])
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=233287583]
 
@@ -27,10 +68,8 @@ mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("2_i5gru")
 fit_content = true
 
-[node name="FlagArea" parent="." unique_id=336358493 instance=ExtResource("3_xusro")]
-position = Vector2(-205, 121)
-
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=954985239]
+volume_db = 9.0
 
 [node name="Control" type="Control" parent="." unique_id=916458780]
 custom_minimum_size = Vector2(1152, 648)
@@ -63,3 +102,18 @@ grow_vertical = 0
 theme_override_constants/margin_left = 300
 theme_override_constants/margin_right = 300
 theme_override_constants/margin_bottom = 100
+
+[node name="TimerAudio25" type="Timer" parent="." unique_id=2126275535]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="TimerAudio10" type="Timer" parent="." unique_id=715567418]
+wait_time = 75.0
+one_shot = true
+autostart = true
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1445024273]
+stream = ExtResource("7_7f7t6")
+volume_db = -16.0
+autoplay = true

@@ -26,18 +26,15 @@ func _ready() -> void:
 		notifier.screen_entered.connect(_on_screen_entered)
 		body_entered.connect(_on_body_entered)
 
-# Quand CETTE tuile entre à l'écran, elle déclenche la chute de TOUTE la structure liée
 func _on_screen_entered() -> void:
 	start_falling_structure()
 
-# Activation en chaîne de la chute
 func start_falling_structure() -> void:
 	if is_falling:
 		return
 	
 	is_falling = true
 
-	# On prévient immédiatement tous les blocs collés pour qu'ils tombent aussi
 	var overlapping_areas = get_overlapping_areas()
 	for area in overlapping_areas:
 		if area.has_method("start_falling_structure"):
@@ -53,15 +50,12 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	
-	# Vérifie si c'est le joueur (par groupe 'player' ou 'Player' ou par classe/nom)
 	var is_player = body.is_in_group("player") or body.is_in_group("Player") or body.name.to_lower().begins_with("player")
 	
 	if is_player:
 		
-		# On cherche le niveau qui possède la fonction trigger_obstacle_hit()
 		var level = get_tree().current_scene
 		
-		# Si la scène principale n'est pas le niveau directement, on remonte ou on cherche dans l'arbre
 		if not (level and level.has_method("trigger_obstacle_hit")):
 			level = find_level_node(self)
 		
@@ -72,7 +66,6 @@ func _on_body_entered(body: Node2D) -> void:
 		
 		destroy_structure()
 
-# Fonction utilitaire pour remonter dans l'arbre jusqu'à trouver le niveau
 func find_level_node(node: Node) -> Node:
 	var current = node
 	while current:

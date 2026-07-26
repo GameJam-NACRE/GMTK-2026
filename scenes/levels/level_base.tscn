@@ -45,6 +45,7 @@ tile_set = ExtResource("4_g7p6o")
 [node name="FlagArea" parent="." unique_id=336358493 instance=ExtResource("3_dje0g")]
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=2078814884]
+volume_db = 12.0
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=91605087]
 
@@ -81,3 +82,6 @@ autoscroll = Vector2(50, 0)
 z_index = 1
 position = Vector2(575, 368.00003)
 texture = SubResource("NoiseTexture2D_15vnu")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1425896056]
+autoplay = true

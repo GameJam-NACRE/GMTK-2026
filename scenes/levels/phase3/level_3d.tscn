@@ -2,7 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dhm8j5ww4s7j" path="res://src/levels/phase3/level_3d.gd" id="1_qbhmn"]
 [ext_resource type="FontFile" uid="uid://doc3ynaivimmv" path="res://assets/fonts/PublicPixel-rv0pA.ttf" id="2_lcys0"]
+[ext_resource type="Script" uid="uid://bf42h8c1fsmmw" path="res://src/dialogues/dialogue_data.gd" id="2_r7044"]
+[ext_resource type="AudioStream" uid="uid://cb2yyglks6ckr" path="res://assets/dialogues/phase3/3D-1.mp3" id="3_7oxau"]
 [ext_resource type="PackedScene" uid="uid://dj8nl7sbgjqpi" path="res://scenes/player/player_3d.tscn" id="3_tu6lb"]
+[ext_resource type="AudioStream" uid="uid://k83gvjxcicgc" path="res://assets/dialogues/phase3/3D-2.mp3" id="4_il8ge"]
 [ext_resource type="Texture2D" uid="uid://bgcevghkedboj" path="res://assets/pico-8 assets/img/tilemap_packed.png" id="4_tmqvo"]
 [ext_resource type="PackedScene" uid="uid://be4lqgv6x6b2x" path="res://scenes/levels/components/wall_3d.tscn" id="5_5uwia"]
 [ext_resource type="PackedScene" uid="uid://c2bggvfwniq4g" path="res://scenes/levels/components/tunnel_3d.tscn" id="6_qda23"]
@@ -12,6 +15,25 @@
 [ext_resource type="Texture2D" uid="uid://c6sjlqo6qi14a" path="res://assets/pico-8 assets/img/key_3d.png" id="9_xoe5y"]
 [ext_resource type="Texture2D" uid="uid://d0owl5cm21d4w" path="res://assets/pico-8 assets/img/flag_3d.png" id="10_qdjhv"]
 [ext_resource type="Texture2D" uid="uid://co2004jthfxc0" path="res://assets/pico-8 assets/img/arrow.png" id="11_jchd4"]
+[ext_resource type="PackedScene" uid="uid://cl4ldlo632h6i" path="res://scenes/levels/components/dial_area_3d.tscn" id="13_xeve4"]
+[ext_resource type="AudioStream" uid="uid://nofpo6mree3i" path="res://assets/musique/mini_jeu_2.mp3" id="15_srrp5"]
+
+[sub_resource type="Resource" id="Resource_r7044"]
+script = ExtResource("2_r7044")
+text = "Urgh, it’s... it’s even worse than I thought, I really wasn’t meant to be played like that. All right, is it hideous enough to make you stop playing and chasing the CountDown ?"
+audio = ExtResource("3_7oxau")
+dial_char_speed = 0.055
+dial_long_pause = 0.6
+dial_short_pause = 0.35
+metadata/_custom_type_script = "uid://bf42h8c1fsmmw"
+
+[sub_resource type="Resource" id="Resource_srrp5"]
+script = ExtResource("2_r7044")
+id = 1
+text = "Oh no it’s not. STOP IT !"
+audio = ExtResource("4_il8ge")
+dial_long_pause = 0.6
+metadata/_custom_type_script = "uid://bf42h8c1fsmmw"
 
 [sub_resource type="Environment" id="Environment_xoe5y"]
 ambient_light_source = 2
@@ -104,8 +126,12 @@ albedo_texture = ExtResource("10_qdjhv")
 uv1_scale = Vector3(-5.335, -5.335, -5.335)
 texture_filter = 0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_xeve4"]
+size = Vector3(3.285, 4.49, 5.765)
+
 [node name="Level3D" type="Node3D" unique_id=1025291056]
 script = ExtResource("1_qbhmn")
+dialogues = Array[ExtResource("2_r7044")]([SubResource("Resource_r7044"), SubResource("Resource_srrp5")])
 screen_fade_in = 0.5
 screen_fade_out = 0.5
 
@@ -147,6 +173,7 @@ theme_override_fonts/normal_font = ExtResource("2_lcys0")
 fit_content = true
 
 [node name="AudioPlayer" type="AudioStreamPlayer" parent="." unique_id=361938460]
+volume_db = 6.0
 
 [node name="Control" type="Control" parent="." unique_id=355901558]
 custom_minimum_size = Vector2(1152, 648)
@@ -172,7 +199,7 @@ theme_override_constants/margin_bottom = 100
 
 [node name="Player3D" parent="." unique_id=1690244227 instance=ExtResource("3_tu6lb")]
 transform = Transform3D(-0.955793, 0, 0.2940403, 0, 1, 0, -0.2940403, 0, -0.955793, 16.478828, 1.2344629, -40.402077)
-run_speed = 4.5
+run_speed = 3.0
 jump_velocity = 4.5
 
 [node name="Sol" type="StaticBody3D" parent="." unique_id=825751953]
@@ -360,6 +387,20 @@ height = 1.997
 transform = Transform3D(0.08717398, 0.9796005, -0.18095392, 0.037888438, 0.17825232, 0.9832549, 0.9954641, -0.09257069, -0.021577392, 0.05031681, 0.46622533, -0.19702202)
 height = 2.177124
 
+[node name="DialArea" parent="." unique_id=1432373336 instance=ExtResource("13_xeve4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.784562, -4.2915344e-06, 28.707203)
+dialogue_id = 1
+
+[node name="CollisionShape2D" parent="DialArea" index="0" unique_id=1493224204]
+transform = Transform3D(0.7834568, 0, 0.62144625, 0, 1, 0, -0.62144625, 0, 0.7834568, 0, 0, 0.88194275)
+shape = SubResource("BoxShape3D_xeve4")
+
+[node name="Music" type="AudioStreamPlayer" parent="." unique_id=1837842405]
+stream = ExtResource("15_srrp5")
+volume_db = -16.0
+pitch_scale = 0.85
+autoplay = true
+
 [editable path="Object3D/Wall3D"]
 [editable path="Object3D/Tunnel3D"]
 [editable path="Object3D/Tunnel3D2"]
@@ -378,3 +419,4 @@ height = 2.177124
 [editable path="Object3D/Box/Box3D10"]
 [editable path="Object3D/Box/Box3D11"]
 [editable path="Object3D/Tunnel3D6"]
+[editable path="DialArea"]

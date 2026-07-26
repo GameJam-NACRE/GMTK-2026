@@ -23,23 +23,16 @@ func _convert_tiles_to_obstacles() -> void:
 		if not tile_set_source:
 			continue
 
-		# 1. Découpe exacte de la tuile
 		var atlas_texture = AtlasTexture.new()
 		atlas_texture.atlas = tile_set_source.texture
 		atlas_texture.region = tile_set_source.get_tile_texture_region(atlas_coords)
-
-		# 2. CALCUL EXACT DE LA POSITION (Prend en compte l'échelle 5.0 !)
-		# map_to_local(cell) doit être multiplié par scale pour correspondre à la grille agrandie
 		var local_pos = map_to_local(cell) * scale
 		var global_tile_pos = local_pos + global_position
 
-		# 3. Instanciation
 		var obstacle_instance = obstacle_scene.instantiate()
 		obstacle_instance.global_position = global_tile_pos
-		obstacle_instance.scale = scale # Garde l'échelle (5.0, 5.0)
+		obstacle_instance.scale = scale
 
-		# 4. Transmission de la texture
-		# On applique directement la texture sur la variable ou sur le Sprite2D enfant
 		if "texture" in obstacle_instance:
 			obstacle_instance.texture = atlas_texture
 		elif obstacle_instance.has_node("Sprite2D"):
@@ -47,5 +40,4 @@ func _convert_tiles_to_obstacles() -> void:
 
 		get_parent().add_child.call_deferred(obstacle_instance)
 
-	# 5. Efface la TileMap une fois les objets créés
 	clear()
