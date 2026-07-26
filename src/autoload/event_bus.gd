@@ -40,6 +40,7 @@ signal send_time_countdown(time: float)
 
 @warning_ignore("unused_signal")
 signal ask_time_countdown()
+#
 # ==== Signaux Player ============
 
 # Ajoute 1 pièce au joueur
