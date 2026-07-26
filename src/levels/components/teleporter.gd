@@ -12,7 +12,6 @@ func _ready() -> void:
 func _on_body_entered(body: Node2D) -> void:
 	if is_used:
 		return
-
 	var is_player = body.is_in_group("player") or body.is_in_group("Player") or body.name.to_lower().begins_with("player")
 	
 	if is_player:

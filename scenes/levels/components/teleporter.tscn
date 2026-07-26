@@ -2,11 +2,16 @@
 
 [ext_resource type="Script" uid="uid://d2en1pn3cpmmq" path="res://src/levels/components/teleporter.gd" id="1_l1p0l"]
 
-[node name="Teleporter" type="Node2D" unique_id=1350530922]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jir6m"]
+size = Vector2(70, 69)
+
+[node name="Teleporter" type="Node2D" unique_id=810036880]
 script = ExtResource("1_l1p0l")
 
-[node name="Marker2D" type="Marker2D" parent="." unique_id=1840937603]
+[node name="Area2D" type="Area2D" parent="." unique_id=277701014]
 
-[node name="Area2D" type="Area2D" parent="." unique_id=1803255510]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=823414698]
+position = Vector2(25, 24.5)
+shape = SubResource("RectangleShape2D_jir6m")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2074723293]
+[node name="Marker2D" type="Marker2D" parent="." unique_id=1022848920]

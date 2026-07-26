@@ -4,14 +4,15 @@ var saved_countdown_time: float = -1.0
 var current_level: int = -1
 
 var level_queue: Array[PackedScene] = [
+	preload("res://scenes/levels/phase0/level_0.scn"),
+	preload("res://scenes/levels/phase2/level_8.tscn"),
+	preload("res://scenes/levels/phase2/level_8_bis.tscn"),
+	preload("res://scenes/levels/phase2/level_8_ter.tscn"),
 	preload("res://scenes/levels/phase3/top_down.tscn"),
 	preload("res://scenes/levels/phase3/level_3d.tscn"),
 	preload("res://scenes/levels/phase3/clicker.scn"),
 	preload("res://scenes/levels/phase4/final.tscn"),
-	preload("res://scenes/levels/phase0/level_0.tscn"),
-	preload("res://scenes/levels/phase2/level_8.tscn"),
 	preload("res://scenes/levels/phase3/clicker.scn"),
-	preload("res://scenes/levels/phase4/final.tscn"),
 ]
 
 const SAVE_PATH = "user://gamesave.cfg"

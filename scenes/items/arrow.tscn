@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dok4nxc8aelay"]
+
+[ext_resource type="Texture2D" uid="uid://mr3ilrpg2tx1" path="res://assets/items/arrow.webp" id="1_6glrf"]
+[ext_resource type="Script" uid="uid://cudc45wujbs5c" path="res://src/items/arrow.gd" id="1_ghtj4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hs8x0"]
+
+[node name="Arrow" type="Node2D" unique_id=293278525]
+script = ExtResource("1_ghtj4")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1601518748]
+visible = false
+texture = ExtResource("1_6glrf")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=615957688]
+
+[node name="TriggerBox" type="CollisionShape2D" parent="Area2D" unique_id=2114911453]
+shape = SubResource("RectangleShape2D_hs8x0")

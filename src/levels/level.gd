@@ -22,7 +22,6 @@ func _ready() -> void:
 func _on_launch_dialogue(id: int) -> void :
 	var dialogue_data = _get_dialogue_by_id(id)
 
-	print("dial number : ", [id])
 	if dialogue_data == null :
 		push_warning("Level: Dialogue Queue: Wrong Dialogue ID -> ", id)
 		return
