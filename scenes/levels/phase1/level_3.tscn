@@ -273,7 +273,7 @@ position = Vector2(1192, -600)
 position = Vector2(2376, -848)
 
 [node name="TimeCollectible6" parent="." index="27" unique_id=1243257509 instance=ExtResource("10_avip2")]
-position = Vector2(1904, -864)
+position = Vector2(1900, -867)
 
 [node name="TimeCollectible7" parent="." index="28" unique_id=154849467 instance=ExtResource("10_avip2")]
 position = Vector2(1576, -1176)
