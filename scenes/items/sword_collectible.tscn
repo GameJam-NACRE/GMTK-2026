@@ -8,4 +8,5 @@
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2131855540]
 
 [node name="CollectibleSprite2D" parent="." unique_id=495970359 instance=ExtResource("1_ebb05")]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_v5mxh")
