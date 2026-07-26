@@ -21,6 +21,7 @@ func _ready() -> void:
 	await get_tree().create_timer(25.0).timeout
 
 	button.show()
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	if custom_cursor:
 			Input.set_custom_mouse_cursor(custom_cursor)
 
