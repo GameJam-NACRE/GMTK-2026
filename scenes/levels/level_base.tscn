@@ -84,3 +84,4 @@ position = Vector2(575, 368.00003)
 texture = SubResource("NoiseTexture2D_15vnu")
 
 [node name="Music" type="AudioStreamPlayer" parent="." unique_id=1425896056]
+autoplay = true
