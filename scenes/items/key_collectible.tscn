@@ -12,3 +12,5 @@ script = ExtResource("1_lsoel")
 shape = SubResource("RectangleShape2D_s1ei1")
 
 [node name="CollectibleSprite2D" parent="." unique_id=495970359 instance=ExtResource("1_m7415")]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

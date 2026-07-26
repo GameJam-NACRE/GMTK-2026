@@ -24,6 +24,7 @@ var hit_box_was_active = false
 var justWallJumped = false
 var has_double_jumped = false
 var has_5_coins = false
+var has_sword = false
 
 var is_knocked_back: bool = false
 
@@ -41,6 +42,7 @@ func _ready() -> void:
 	add_to_group("player")
 	hit_box.monitorable = false
 	EventBus.add_key.connect(_on_add_key)
+	EventBus.add_sword.connect(_on_add_sword)
 	EventBus.use_key.connect(_on_use_key)
 	EventBus.got_key.connect(_on_got_key)
 	EventBus.add_coin.connect(_on_add_coin)
@@ -48,6 +50,20 @@ func _ready() -> void:
 	timerNode.connect('timeout', _on_timer_timeout)
 
 	EventBus.enable_top_down.connect(func(): is_top_down = true)
+
+	enable_sword()
+
+func level_has_sword(level: int) -> bool:
+	if level in [0, 1, 2, 10, 11, 13, 14, 15]:
+		return false
+	return true
+
+func enable_sword() -> void:
+	print(GameManager.current_level)
+	has_sword = level_has_sword(GameManager.current_level)
+
+func _on_add_sword() -> void:
+	has_sword = true
 
 func _on_timer_timeout() -> void:
 	justWallJumped = false
@@ -148,7 +164,7 @@ func _process_platformer_physic(delta: float) -> void:
 	
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("attack") and not is_attacking:
+	if Input.is_action_just_pressed("attack") and not is_attacking and has_sword:
 		is_attacking = true
 		if is_on_floor():
 			animated_sprite_2d.play("attack_2", attack_speed_scale, false)
@@ -160,13 +176,25 @@ func _process_platformer_physic(delta: float) -> void:
 		return
 
 	if not is_on_floor():
-		animated_sprite_2d.animation = "jump"
+		if has_sword:
+			animated_sprite_2d.animation = "jump"
+		else:
+			animated_sprite_2d.animation = "jump_no_sword"
 	elif is_running:
-		animated_sprite_2d.animation = "run"
+		if has_sword:
+			animated_sprite_2d.animation = "run"
+		else:
+			animated_sprite_2d.animation = "run_no_sword"
 	elif velocity.x > 1 or velocity.x < -1:
-		animated_sprite_2d.play("walk")
+		if has_sword:
+			animated_sprite_2d.animation = "walk"
+		else:
+			animated_sprite_2d.animation = "walk_no_sword"
 	else:
-		animated_sprite_2d.animation = "idle"
+		if has_sword:
+			animated_sprite_2d.animation = "idle"
+		else:
+			animated_sprite_2d.animation = "idle_no_sword"
 
 
 
