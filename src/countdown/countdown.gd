@@ -29,6 +29,7 @@ var is_first_stop: bool = true
 var stop_tween: Tween
 var hud_mode_on: bool = true
 var level_ending_triggered: bool = false
+var critical_triggered: bool = false
 
 const TimeEffectScene = preload("res://scenes/countdown/time_effect.tscn")
 
@@ -71,6 +72,10 @@ func _process(_delta: float) -> void:
 	main_label.text = formated_countdown
 	intro_label.text = formated_countdown
 	clicker_label.text = formated_countdown
+
+	if not critical_triggered and time_left <= critic_countdown:
+		critical_triggered = true
+		EventBus.countdown_critical.emit()
 
 	if not hud_mode_on and not level_ending_triggered and time_left <= critic_countdown:
 		level_ending_triggered = true

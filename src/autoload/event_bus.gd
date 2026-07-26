@@ -89,6 +89,9 @@ signal level_loaded()
 @warning_ignore("unused_signal")
 signal level_ended()
 
+@warning_ignore("unused_signal")
+signal countdown_critical()
+
 # ==== Signaux Composants ============
 
 # Indique qu'un flag de fin de niveau à été atteint
