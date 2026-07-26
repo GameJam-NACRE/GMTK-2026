@@ -30,6 +30,13 @@ var is_knocked_back: bool = false
 var key: bool = false
 var coins: int = 0
 
+# top down
+@export_category("Top Down Game")
+var is_top_down: bool = false
+@export var lane_positions: Array[float] = [-160.0, 0.0, 160.0]
+@export var lane_change_speed: float = 15.0
+var current_lane: int = 1
+
 func _ready() -> void:
 	add_to_group("player")
 	hit_box.monitorable = false
@@ -39,6 +46,8 @@ func _ready() -> void:
 	EventBus.add_coin.connect(_on_add_coin)
 	EventBus.enemy_contact.connect(_on_enemy_contact)
 	timerNode.connect('timeout', _on_timer_timeout)
+
+	EventBus.enable_top_down.connect(func(): is_top_down = true)
 
 func _on_timer_timeout() -> void:
 	justWallJumped = false
@@ -70,7 +79,34 @@ func _on_enemy_contact(enemy_pos: Vector2) -> void:
 	is_knocked_back = false
 
 func _physics_process(delta: float) -> void:
+	if is_top_down:
+		_process_top_down_physic(delta)
+	else:
+		_process_platformer_physic(delta)
 
+
+func _process_top_down_physic(delta: float) -> void:
+	if Input.is_action_just_pressed("move_left"):
+		if current_lane > 0:
+			current_lane -= 1
+			animated_sprite_2d.flip_h = true
+	elif Input.is_action_just_pressed("move_right"):
+		if current_lane < lane_positions.size() - 1:
+			current_lane += 1
+			animated_sprite_2d.flip_h = false
+
+	var target_x: float = lane_positions[current_lane]
+
+	global_position.x = lerp(global_position.x, target_x, lane_change_speed * delta)
+	
+	velocity.y = 0
+
+	animated_sprite_2d.animation = "run"
+
+	move_and_slide()
+
+
+func _process_platformer_physic(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
@@ -84,19 +120,22 @@ func _physics_process(delta: float) -> void:
 
 	if direction > 0 and not justWallJumped:
 		animated_sprite_2d.flip_h = false
+		hit_box.position.x = abs(hit_box.position.x)
 	elif direction < 0 and not justWallJumped:
 		animated_sprite_2d.flip_h = true
+		hit_box.position.x = -abs(hit_box.position.x)
 	
 	if Input.is_action_just_pressed("move_up") and not is_knocked_back:
 		if is_on_floor():
 			has_double_jumped = false 
 			velocity.y = jump_velocity
 		elif is_on_wall() and not has_5_coins:
-				velocity.y = jump_velocity * 0.8
-				velocity.x = get_wall_normal().x * wall_jump_power
-				animated_sprite_2d.flip_h = get_wall_normal().x < 0
-				justWallJumped = true
-				timerNode.start(wall_jump_time)
+			velocity.y = jump_velocity * 0.8
+			velocity.x = get_wall_normal().x * wall_jump_power
+			animated_sprite_2d.flip_h = get_wall_normal().x < 0
+			hit_box.position.x = abs(hit_box.position.x) * (-1 if get_wall_normal().x < 0 else 1)
+			justWallJumped = true
+			timerNode.start(wall_jump_time)
 		elif not has_double_jumped and has_5_coins:
 			velocity.y = -double_jump_power
 			has_double_jumped = true
@@ -128,6 +167,8 @@ func _physics_process(delta: float) -> void:
 		animated_sprite_2d.play("walk")
 	else:
 		animated_sprite_2d.animation = "idle"
+
+
 
 func _on_animated_sprite_2d_animation_finished() -> void:
 	if is_attacking:
