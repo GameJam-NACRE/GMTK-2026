@@ -1,0 +1,31 @@
+[gd_scene format=4 uid="uid://dat34inp2iia6"]
+
+[ext_resource type="Script" uid="uid://cvf76m0ysx507" path="res://src/levels/components/movable_wall.gd" id="1_08x7v"]
+[ext_resource type="TileSet" uid="uid://bbq805536q3ed" path="res://assets/tilemaps/main_tileset.tres" id="2_utyba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iyu3w"]
+size = Vector2(7.9999986, 48.00001)
+
+[node name="MovableWallVertical" type="Node2D" unique_id=410946994]
+scale = Vector2(5, 5)
+script = ExtResource("1_08x7v")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="." unique_id=1074352455]
+
+[node name="TileMapLayer" type="TileMapLayer" parent="AnimatableBody2D" unique_id=1960301730]
+texture_filter = 1
+scale = Vector2(0.9999998, 0.9999998)
+tile_map_data = PackedByteArray("AAAAAAAAAAACAAQAAAAAAAEAAAACAAQAAAAAAAIAAAACAAQAAAAAAAMAAAACAAQAAAAAAAQAAAACAAQAAAAAAAUAAAACAAQAAAA=")
+tile_set = ExtResource("2_utyba")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D" unique_id=625056980]
+position = Vector2(3.9999983, 23.999996)
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_iyu3w")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1187140574]
+
+[node name="TriggerShape" type="CollisionShape2D" parent="Area2D" unique_id=803939550]
+scale = Vector2(0.9999998, 0.9999998)
+
+[node name="Marker2D" type="Marker2D" parent="." unique_id=758571969]

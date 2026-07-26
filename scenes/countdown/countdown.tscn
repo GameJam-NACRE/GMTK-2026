@@ -14,10 +14,11 @@ expand_margin_bottom = 8.0
 
 [node name="Countdown" type="CanvasLayer" unique_id=538404236]
 script = ExtResource("1_7dsqq")
+countdown_start = 560.0
 intro_fade_in_time = 0.0
 intro_end_font_size = 50
 main_fade_in_time = 0.0
-critic_countdown = 65.0
+critic_countdown = 90.0
 
 [node name="PanelContainer" type="PanelContainer" parent="." unique_id=1429213477]
 modulate = Color(1, 1, 1, 0)

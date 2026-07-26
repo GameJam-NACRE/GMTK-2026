@@ -1,0 +1,12 @@
+{
+  version: 2,
+  mediaFileName: 'mini_jeu_2.mp3',
+  cutSegments: [
+    {
+      start: 3.28335,
+      end: 54.70185,
+      name: '',
+      selected: true,
+    },
+  ],
+}

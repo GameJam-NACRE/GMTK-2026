@@ -40,6 +40,7 @@ signal send_time_countdown(time: float)
 
 @warning_ignore("unused_signal")
 signal ask_time_countdown()
+#
 # ==== Signaux Player ============
 
 # Ajoute 1 pièce au joueur
@@ -64,6 +65,9 @@ signal got_key()
 # Ajoute l'épée au joueur
 @warning_ignore("unused_signal")
 signal add_sword()
+
+@warning_ignore("unused_signal")
+signal enable_top_down()
 
 # ==== Signaux HUD ============
 

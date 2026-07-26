@@ -8,7 +8,7 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	if is_collected == true:
 		return
-	
+
 	item_effect()
 	queue_free()
 

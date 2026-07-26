@@ -24,6 +24,9 @@ extends CanvasLayer
 @onready var clicker_countdown: VBoxContainer = $CenterContainer/ClickerCountdown
 @onready var clicker_label: Label = $CenterContainer/ClickerCountdown/ClickerLabel
 
+var initial_panel_pos: Vector2
+var is_first_stop: bool = true
+var stop_tween: Tween
 var hud_mode_on: bool = true
 var level_ending_triggered: bool = false
 
@@ -53,6 +56,8 @@ func _ready() -> void:
 		play_intro_sequence()
 	elif GameManager.current_level != index:
 		play_classic_sequence()
+		await get_tree().process_frame
+		initial_panel_pos = panel_container.position
 
 func _process(_delta: float) -> void:
 	var time_left: float = countdown.time_left
@@ -95,6 +100,51 @@ func play_classic_sequence() -> void:
 func _on_stop_countdown() -> void:
 	countdown.set_paused(true)
 
+	# Si un tween de stop était déjà en cours, on l'annule proprement
+	if stop_tween and stop_tween.is_running():
+		stop_tween.kill()
+
+	# 1. On passe le texte/fond en rouge
+	main_label.modulate = Color.RED
+
+	# 2. On déclenche le tremblement
+	_shake_node(panel_container, 0.4, 8.0)
+
+	stop_tween = create_tween()
+
+	if is_first_stop:
+		is_first_stop = false
+		
+		# Calcul du centre de l'écran (déduit la moitié de la taille du panel)
+		var center_pos = (get_viewport().get_visible_rect().size / 2.0) - (panel_container.size / 2.0)
+		
+		# Aller rapide au centre
+		stop_tween.tween_property(panel_container, "position", center_pos, 0.25)\
+			.set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
+			
+		# Pause au centre
+		stop_tween.tween_interval(1.0)
+		
+		# Retour à la position initiale
+		stop_tween.tween_property(panel_container, "position", initial_panel_pos, 0.3)\
+			.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_IN_OUT)
+	else:
+		# Si ce n'est pas la première fois, on s'assure qu'il est bien à sa position initiale
+		panel_container.position = initial_panel_pos
+
+func _shake_node(node: Control, duration: float, intensity: float) -> void:
+	var shake_tween = create_tween()
+	var num_shakes = int(duration / 0.04)
+	
+	for i in range(num_shakes):
+		var shake_offset = Vector2(randf_range(-intensity, intensity), randf_range(-intensity, intensity))
+		shake_tween.tween_property(node, "pivot_offset", shake_offset, 0.04)
+		
+	shake_tween.tween_property(node, "pivot_offset", Vector2.ZERO, 0.04)
+
+# func _on_stop_countdown() -> void:
+# 	countdown.set_paused(true)
+#
 func _on_countdown_timeout() -> void:
 	main_label.text = "00:00:00"
 	EventBus.countdown_end.emit()
