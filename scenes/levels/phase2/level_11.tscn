@@ -557,7 +557,7 @@ shape = SubResource("RectangleShape2D_pistj")
 position = Vector2(608, -510)
 
 [node name="SwordCollectible" parent="." index="34" unique_id=1348444326 instance=ExtResource("8_3sbdp")]
-position = Vector2(1825.9999, 4965)
+position = Vector2(1847.9999, 4960)
 scale = Vector2(5, 5)
 
 [node name="DestructibleWall" type="StaticBody2D" parent="." index="35" unique_id=839487050 groups=["destructible"]]
