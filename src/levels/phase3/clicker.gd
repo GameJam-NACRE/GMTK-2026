@@ -12,7 +12,6 @@ func _ready() -> void:
 	super()
 	button.pressed.connect(_on_button_pressed)
 	EventBus.end_level_clicker.connect(_on_end_level)
-	EventBus.stop_countdown.emit()
 	EventBus.countdown_clicker_mode.emit()
 	EventBus.launch_dialogue.emit(0)
 	

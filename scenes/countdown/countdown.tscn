@@ -14,7 +14,7 @@ expand_margin_bottom = 8.0
 
 [node name="Countdown" type="CanvasLayer" unique_id=538404236]
 script = ExtResource("1_7dsqq")
-countdown_start = 120.0
+countdown_start = 560.0
 intro_fade_in_time = 0.0
 intro_end_font_size = 50
 main_fade_in_time = 0.0
