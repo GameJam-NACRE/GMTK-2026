@@ -16,4 +16,3 @@ func _on_body_entered(body: Node2D) -> void:
 	
 	_triggered = true
 	EventBus.launch_dialogue.emit(dialogue_id)
-
